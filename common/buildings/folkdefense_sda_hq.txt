@@ -2,7 +2,6 @@ building_sdahq = {
 	base_buildtime = 720
 	empire_unique = yes
 	ai_replace = no
-	ai_special_building = yes
 
 	cost = {
 		minerals = 500
@@ -45,7 +44,6 @@ building_sdaoffice = {
 	base_buildtime = 180
 	planet_unique = yes
 	ai_replace = no
-	ai_special_building = yes
 
 	cost = {
 		minerals = 200
