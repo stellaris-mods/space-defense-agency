@@ -1,0 +1,28 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_spaceport_defenseagency"
+		texturefile = "gfx/interface/icons/modules/spacedefenseagency.dds"
+	}
+	spriteType = {
+		name = "GFX_folksda_hangar"
+		texturefile = "gfx/interface/icons/modules/sda_hangar.dds"
+	}
+	spriteType = {
+		name = "GFX_folksda_negativeaura"
+		texturefile = "gfx/interface/icons/modules/sda_negativeaura.dds"
+	}
+	spriteType = {
+		name = "GFX_folksda_positiveaura"
+		texturefile = "gfx/interface/icons/modules/sda_positiveaura.dds"
+	}
+	spriteType = {
+		name = "GFX_folksda_snare"
+		texturefile = "gfx/interface/icons/modules/sda_snare.dds"
+	}
+	#spriteType = {
+	#	name = "GFX_evt_spacedefenseagency"
+	#	texturefile = "gfx/event_pictures/mothball_event.dds"
+	#	masking_texture = "gfx/interface/situation_log/event_mask.dds"
+	#	alwaystransparent = yes
+	#}
+}

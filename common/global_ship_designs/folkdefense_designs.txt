@@ -1,0 +1,40 @@
+ship_design = {
+	name = "SDA Wormhole"
+	hide_size = yes
+	ship_size = folk_invisible_station
+	section = {
+		template = "FOLK_INVIS_SECTION"
+		slot = "1"
+		component = {
+			slot = "STRIKE_CRAFT_01"
+			template = "SPACEDEFENSE_BOMBERS_1"
+		}
+		component = {
+			slot = "STRIKE_CRAFT_02"
+			template = "SPACEDEFENSE_FIGHTERS_1"
+		}
+		component = {
+			slot = "STRIKE_CRAFT_03"
+			template = "SPACEDEFENSE_FIGHTERS_2"
+		}
+		component = {
+			slot = "STRIKE_CRAFT_04"
+			template = "SPACEDEFENSE_FIGHTERS_3"
+		}
+	}
+	required_component = "SHIP_SENSOR_3"
+}
+
+ship_design = {
+	name = "SDA Wormholes"
+	hide_size = yes
+	ship_size = folk_invisible_station
+	section = {
+		template = "FOLK_INVIS_SECTION"
+		slot = "1"
+		component = {
+			slot = "STRIKE_CRAFT_01"
+			template = "SPACEDEFENSE_STINGERS"
+		}
+	}
+}

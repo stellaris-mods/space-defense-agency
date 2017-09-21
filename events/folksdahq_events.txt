@@ -1,0 +1,416 @@
+namespace = folksdahq
+
+fleet_event = {
+	id = folksdahq.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = owner
+		exists = from
+		NOT = { has_fleet_flag = "folksdahq_ignorefleet" }
+		is_ship_class = shipclass_military
+		FROM = {
+			NOT = { has_star_flag = "folksda_ignore_system" }
+			exists = space_owner
+		}
+		OR = {
+			# Either this solar system is owned
+			# by a country, and the incoming fleet is hostile
+			# and a planet in the system has a SDA office
+			AND = {
+				FROM = {
+					space_owner = { has_country_flag = "folksda_hashq" }
+					OR = {
+						# Either there is a planet with a SDA building
+						any_planet = {
+							# Doesn't matter if the planet isnt owned by the space_owner
+							# The SDA will defend it if any planet in the system has a office
+							OR = {
+								has_building = building_sdaoffice
+								has_building = building_sdahq
+								AND = {
+									has_spaceport = yes
+									has_spaceport_module = folksda_platform_module
+								}
+							}
+						}
+						# Or we have a frontier outpost in the system
+						any_ship_in_system = {
+							is_ship_size = outpost_station
+						}
+					}
+				}
+				owner = { # Fleet owner
+					is_hostile = from.space_owner
+				}
+			}
+			# Or the SDA owner is occupying a planet in this system, and
+			# the occupier has a SDA HQ and the incoming fleet is hostile
+			# to that fleet
+			AND = {
+				FROM = {
+					any_planet = {
+						is_occupied_flag = yes
+						exists = controller
+						controller = {
+							has_country_flag = "folksda_hashq"
+							# Only if we actually declared war on someone,
+							# not just if we are occupying some random planet in another context
+							is_at_war = yes
+							is_hostile = from.space_owner
+							# Entering fleets owner is hostile to the controller of the planet
+							root.owner = {
+								is_hostile = prev
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	immediate = {
+		save_event_target_as = folksda_targetfleet
+		set_timed_fleet_flag = {
+			flag = "folksdahq_ignorefleet"
+			days = 270
+		}
+		from = {
+			set_timed_star_flag = {
+				flag = "folksda_ignore_system"
+				days = 270
+			}
+		}
+		if = {
+			limit = {
+				# If the owner of this fleet is hostile to the space_owner,
+				# that means the space owner is spawning the wormholes
+				owner = {
+					is_hostile = from.space_owner
+				}
+			}
+			space_owner = {
+				fd_ensure_office_count = yes
+
+				# Calculate the hostile fleets total hitpoints, roughly
+				fd_count_hitpoints = yes
+
+				# Hostiles in our system, and we have HQ
+				country_event = {
+					id = folksdahq.110
+				}
+			}
+			else = {
+				# If the owner of the fleet is NOT hostile to the space_owner, there
+				# should be an occupied planet in the system, and the controller of that
+				# planet is summoning the fleet
+				FROM = {
+					random_system_planet = {
+						limit = {
+							is_occupied_flag = yes
+							exists = controller
+							controller = {
+								has_country_flag = "folksda_hashq"
+							}
+						}
+						controller = {
+							fd_ensure_office_count = yes
+
+							# Calculate the hostile fleets total hitpoints, roughly
+							fd_count_hitpoints = yes
+
+							# We are occupying a planet, and a hostile fleet enters the system
+							country_event = {
+								id = folksdahq.110
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
+
+country_event = {
+	id = folksdahq.110
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		# Only count the "main" wormholes, not the extra ones.
+		count_owned_ships = {
+			limit = {
+				has_ship_flag = "folksda_platform_invis_ship"
+			}
+			count < 3
+		}
+	}
+
+	immediate = {
+		# Transfer office count to temp_counter
+		set_variable = {
+			which = "temp_counter"
+			value = "SDAPlanetaryOfficeCount"
+		}
+
+		# Limit the number of SDA
+		if = {
+			limit = {
+				check_variable = {
+					which = "temp_counter"
+					value > 4
+				}
+			}
+			set_variable = {
+				which = "temp_counter"
+				value = 5
+			}
+		}
+
+		create_fleet = {
+			settings = {
+				spawn_debris = no
+				can_change_composition = no
+				can_change_leader = no
+				can_upgrade = no
+			}
+			effect = {
+				save_event_target_as = folksda_wormholefleet
+				# Not sure if these 3 are needed at all for a station
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = self
+				set_aggro_range = 1000
+
+				#set_event_locked = yes
+				# XXX unused yet
+				set_fleet_flag = "folksda_platform_invis"
+				# another station buff, jeez
+				set_fleet_flag = "jeezbuffedalready"
+				set_owner = root
+				create_ship = {
+					name = "Space Defense Agency"
+					design = "SDA Wormhole"
+					prefix = no
+					effect = {
+						# We count opened wormhole fleets using this flag
+						set_ship_flag = "folksda_platform_invis_ship"
+					}
+				}
+			}
+		}
+
+		# Calculate base HP because we might have tons of +mods
+		# The hulls HP in ship_sizes is 1200
+		fd_get_wormhole_hp = yes
+
+		# ====== STEP 1: Calculate number of wormholes we are spawning
+		# Calculate the actual number of wormholes we are going to open
+		# based on number of SDA office buildings
+		set_variable = { which = "SDAActualCount" value = "temp_counter" }
+		# +1 for the base wormhole
+		change_variable = { which = "SDAActualCount" value = 1 }
+
+		# ====== STEP 2: Calculate wormholes total combined HP
+		# Our base HP is (basehp * wormhole count)
+		set_variable      = { which = "SDAWormholeHP" value = "SDABaseWormholeHP" }
+		multiply_variable = { which = "SDAWormholeHP" value = "SDAActualCount" }
+
+		# ====== STEP 3: Calculate difference between wormholes combined HP
+		# ======         and the hostile fleets HP that we want to make up for
+		# Divide by two, we dont want to have too much HP
+		divide_variable = { which = "SDAFleetHP" value = 2 }
+		# Subtract the wormholes base HP
+		subtract_variable = { which = "SDAFleetHP" value = "SDAWormholeHP" }
+		# And then divide it by the number of wormholes.
+		divide_variable = { which = "SDAFleetHP" value = "SDAActualCount" }
+		# That's right, the player is punished for having
+		# tech_space_defense_station_improvement (+25% HP)
+		if = {
+			limit = { has_technology = "tech_space_defense_station_improvement" }
+			multiply_variable = { which = "SDAFleetHP" value = 0.75 }
+		}
+
+		while = {
+			limit = {
+				check_variable = {
+					which = "temp_counter"
+					value > 0
+				}
+			}
+			last_created_fleet = {
+				create_ship = {
+					name = "Space Defense Agency"
+					design = "SDA Wormholes"
+					prefix = no
+					effect = {
+						# XXX Unused
+						set_ship_flag = "folksda_platform_invis_extra"
+					}
+				}
+			}
+			change_variable = {
+				which = "temp_counter"
+				value = -1
+			}
+		}
+
+		while = {
+			limit = {
+				check_variable = { which = "SDAFleetHP" value > 500 }
+			}
+			last_created_fleet = {
+				# they stack! zomg
+				add_modifier = {
+					modifier = "sda_addhp"
+					days = -1
+				}
+			}
+			change_variable = {
+				which = "SDAFleetHP"
+				value = -500
+			}
+		}
+
+		last_created_fleet = {
+			# RIPPED from enigmatic fortress lul
+			set_fleet_formation = {
+				# #care if player has more than 16 offices, jeez
+				position = { x = 13.0	y = -7.0	} #17
+				position = { x = 11.5	y = -13.0	} #16
+				position = { x = 0.0	y = -15.5	} #15
+				position = { x = 13.0	y = 7.0		} #14
+				position = { x = -11.8	y = -4.0	} #13
+				position = { x = -15.8	y = 6.5		} #12
+				position = { x = -10.0	y = 8.5		} #11
+				position = { x = -1.6	y = 15.0	} #10
+				position = { x = 14.0	y = -3.0	} #9
+				position = { x = 1.3	y = -11.0	} #8
+				position = { x = -10.5	y = 1.0		} #7
+				position = { x = 3.0	y = 8.0		} #6
+				position = { x = -4.3	y = -7.0	} #5
+				position = { x = 8.0	y = 9.0		} #4
+				position = { x = -4.0	y = 7.3		} #3
+				position = { x = 7.5	y = -10.5	} #2
+				position = { x = 0.0	y = 0.0		} #1
+			}
+			set_formation_scale = 0.4
+			add_modifier = {
+				modifier = "sda_freeoffice"
+				days = -1
+			}
+			add_modifier = {
+				modifier = "sda_freeoffice_portal"
+				days = -1
+			}
+			set_location = {
+				target = event_target:folksda_targetfleet
+				distance = 40
+				angle = random
+			}
+			queue_actions = {
+				repeat = {
+					while = {
+						id = "folksdahq_targetalive.1"
+						exists = event_target:folksda_targetfleet
+						event_target:folksda_targetfleet = {
+							exists = solar_system
+							solar_system = { is_same_value = prevprev.solar_system }
+							exists = owner
+							owner = { is_hostile = prevprev.owner }
+						}
+					}
+					wait = 7
+				}
+				effect = {
+					id = "folksdahq_deletewormhole.1"
+					destroy_fleet = this
+				}
+			}
+		}
+	}
+}
+
+# We should, to be 100% certain, check for
+# buildings that are queued, planets that are lost/transferred/ownerless
+# and so forth.
+# But the fact is, if the count is wrong for some period of time, it is
+# not really that much of a problem.
+
+#A building construction has been completed.
+# This = Planet
+# From = Tile
+# Cleared Early
+planet_event = {
+	id = folksdahq.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			OR = {
+				has_building = building_sdahq
+				has_building = building_sdaoffice
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				from = {
+					has_building = building_sdahq
+				}
+			}
+			owner = {
+				set_country_flag = "folksda_hashq"
+			}
+			else = {
+				owner = {
+					fd_ensure_office_count = yes
+				}
+			}
+		}
+	}
+}
+
+# Insurance?!
+country_event = {
+	id = folksdahq.404
+	hide_window = yes
+	mean_time_to_happen = {
+		days = 7
+	}
+	trigger = {
+		any_owned_planet = {
+			has_building = building_sdahq
+		}
+	}
+	immediate = {
+		set_country_flag = "folksda_hashq"
+	}
+}
+
+
+# A building construction has demolished or replaced
+# This = Planet
+# From = Tile
+planet_event = {
+	id = folksdahq.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			has_prev_building = building_sdahq
+		}
+	}
+
+	immediate = {
+		owner = {
+			remove_country_flag = "folksda_hashq"
+		}
+	}
+}

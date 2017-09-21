@@ -1,0 +1,15 @@
+component_set = {
+	key = "SDASET_HANGAR"
+	icon = "GFX_ship_part_sensor"
+	icon_frame = 1
+}
+component_set = {
+	key = "SDASET_SPACEPORT_AURAS"
+	icon = "GFX_ship_part_sensor"
+	icon_frame = 1
+}
+component_set = {
+	key = "SDASET_SHIELD"
+	icon = "GFX_ship_part_sensor"
+	icon_frame = 1
+}

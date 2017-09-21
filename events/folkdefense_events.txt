@@ -1,0 +1,334 @@
+namespace = folkdefense
+
+planet_event = {
+	id = "folkdefense.1"
+	hide_window = yes
+
+	trigger = {
+		exists = owner
+		has_spaceport = yes
+		has_spaceport_module = "folksda_platform_module"
+		solar_system = {
+			exists = space_owner
+			space_owner = { is_country = root.owner }
+		}
+		NOT = {
+			solar_system = {
+				any_ship_in_system = {
+					exists = owner
+					owner = { is_hostile = root.owner }
+				}
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 6
+	}
+	immediate = {
+		# We do this every 6 months even if it exists, because
+		# the player might have upgraded the station
+		solar_system = {
+			every_fleet_in_system = {
+				limit = {
+					exists = owner
+					owner = { is_same_value = root.owner }
+					has_fleet_flag = "folksda_platform"
+				}
+				save_event_target_as = folksda_oldplatform
+			}
+		}
+		owner = {
+			# Count all offices
+			fd_ensure_office_count = yes
+
+			create_fleet = {
+				effect = {
+					set_fleet_flag = "folksda_platform"
+					set_owner = root.owner
+				}
+			}
+			if = {
+				limit = {
+					fd_canbuild_level_4 = yes
+				}
+				# Create fortress
+				last_created_fleet = {
+					create_ship = {
+						name = "Space Defense Agency"
+						random_existing_design = "military_station_xlarge"
+						graphical_culture = root.owner
+						effect = { set_ship_flag = "folksda_platform" }
+					}
+					add_modifier = {
+						modifier = "sda_freeoffice_xlarge"
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							fd_canbuild_level_3 = yes
+						}
+						# Create fortress
+						last_created_fleet = {
+							create_ship = {
+								name = "Space Defense Agency"
+								random_existing_design = "military_station_large"
+								graphical_culture = root.owner
+								effect = { set_ship_flag = "folksda_platform" }
+							}
+							add_modifier = {
+								modifier = "sda_freeoffice_large"
+								days = -1
+							}
+						}
+						else = {
+							if = {
+								limit = {
+									fd_canbuild_level_2 = yes
+								}
+								# Create station
+								last_created_fleet = {
+									create_ship = {
+										name = "Space Defense Agency"
+										random_existing_design = military_station_medium
+										graphical_culture = root.owner
+										effect = { set_ship_flag = "folksda_platform" }
+									}
+									add_modifier = {
+										modifier = "sda_freeoffice_medium"
+										days = -1
+									}
+								}
+								else = {
+									# Create platform
+									last_created_fleet = {
+										create_ship = {
+											name = "Space Defense Agency"
+											random_existing_design = "military_station_small"
+											graphical_culture = root.owner
+											effect = { set_ship_flag = "folksda_platform" }
+										}
+										add_modifier = {
+											modifier = "sda_freeoffice_small"
+											days = -1
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			last_created_fleet = {
+				add_modifier = { # XXX Probably not needed
+					modifier = "sda_freeoffice"
+					days = -1
+				}
+			}
+
+			if = {
+				limit = {
+					exists = event_target:folksda_oldplatform
+				}
+				last_created_fleet = {
+					set_location = event_target:folksda_oldplatform
+				}
+				event_target:folksda_oldplatform = {
+					delete_fleet = this
+				}
+				else = {
+					root = {
+						set_variable = {
+							which = SDAStationAge
+							value = 0
+						}
+					}
+					last_created_fleet = {
+						set_location = {
+							target = root
+							distance = 40
+							angle = random
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+planet_event = {
+	id = folkdefense.99
+	is_triggered_only = yes
+	title = OK
+	picture = GFX_evt_alien_nature
+	desc = "[Root.SDAStationAge] station age"
+	option = { name = OK }
+}
+
+country_event = {
+	id = folkdefense.98
+	is_triggered_only = yes
+	title = OK
+	picture = GFX_evt_alien_nature
+	desc = {
+		trigger = {
+			has_country_flag = "has_nsc_v3"
+		}
+		text = "has nsc"
+	}
+	desc = {
+		trigger = {
+			NOT = { has_country_flag = "has_nsc_v3" }
+		}
+		text = "NO NSC NSC NO NO NO nsc"
+	}
+	option = { name = OK }
+}
+
+# on monthly pulse
+event = {
+	id = folkdefense.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				OR = {
+					is_country_type = "default"
+					is_country_type = "fallen_empire"
+					is_country_type = "awakened_fallen_empire"
+					is_country_type = "ai_empire"
+					is_country_type = "rebel"
+				}
+			}
+			every_owned_planet = {
+				limit = { has_spaceport = yes }
+				if = {
+					limit = {
+						has_spaceport_module = "folksda_platform_module"
+						solar_system = {
+							any_ship_in_system = {
+								has_ship_flag = "folksda_platform"
+							}
+						}
+					}
+					# yes yes it will set the age for any planet
+					# that doesnt actually have a station due to
+					# other factors, I dont care
+					change_variable = {
+						which = SDAStationAge
+						value = 1
+					}
+				}
+
+				fd_updated_aura_station = yes
+			}
+		}
+	}
+}
+
+# on_colonized
+planet_event = {
+	id = folkdefense.200
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			is_country_type = "default"
+			is_ai = yes
+		}
+	}
+	immediate = {
+		random_list = {
+			20 = { set_planet_flag = "sda_no_snare" }
+			20 = { set_planet_flag = "sda_no_hangar" }
+			60 = { }
+		}
+	}
+}
+
+# I cant get a construction ship to move to an ambient object location
+
+		# # Create new construction ship
+		# owner = {
+		# 	create_fleet = {
+		# 		name = "Space Defense Agency Crew"
+		# 		settings = {
+		# 			spawn_debris = no
+		# 			can_change_composition = no
+		# 			can_change_leader = no
+		# 		}
+		# 		effect = {
+		# 			set_event_locked = yes
+		# 			set_owner = prev
+		# 			set_location = {
+		# 				target = root
+		# 				distance = 8
+		# 				angle = random
+		# 			}
+		# 			set_fleet_stance = passive
+		# 			set_fleet_flag = "folksda_construction_crew"
+		# 			create_ship = {
+		# 				name = "Space Defense Agency Crew"
+		# 				random_existing_design = "constructor"
+		# 				prefix = no
+		# 				graphical_culture = prev
+		# 				effect = { set_ship_flag = "folksda_construction_crew" }
+		# 			}
+		# 			queue_actions = {
+		# 				repeat = {
+		# 					max_iterations = 1
+		# 					effect = {
+		# 						id = folksda_platform.1
+		# 						create_ambient_object = {
+		# 							type = "folkdefense_platform_object"
+		# 							use_3d_location = yes
+		# 						}
+		# 						last_created_ambient_object = {
+		# 							save_event_target_as = folkdefense_location
+		# 							set_location = {
+		# 								target = root
+		# 								distance = 60
+		# 								angle = random
+		# 							}
+		# 							set_ambient_object_flag = "folkdefense_platform"
+		# 						}
+		# 					}
+		# 					move_to = event_target:folkdefense_location
+		# 					wait = 100
+		# 					effect = {
+		# 						id = folksda_platform.2
+		# 						create_fleet = {
+		# 							effect = {
+		# 								set_owner = root.owner
+		# 								create_ship = {
+		# 									name = "Space Defense Agency Platform"
+		# 									random_existing_design = "military_station_small"
+		# 									graphical_culture = root.owner
+		# 									effect = { set_ship_flag = "folksda_platform" }
+		# 								}
+		# 								set_location = event_target:folkdefense_location
+		# 							}
+		# 						}
+		# 					}
+		# 					wait = 7
+		# 				}
+		# 				effect = {
+		# 					id = folksda_platform.3
+		# 					delete_fleet = this
+		# 					if = {
+		# 						limit = {
+		# 							exists = event_target:folkdefense_location
+		# 						}
+		# 						event_target:folkdefense_location = {
+		# 							destroy_ambient_object = this
+		# 						}
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }

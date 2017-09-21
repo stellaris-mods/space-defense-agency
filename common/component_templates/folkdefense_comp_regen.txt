@@ -1,0 +1,35 @@
+utility_component_template = {
+	key = "SPACE_DEFENSE_AGENCY_REGENAURA"
+	size = small
+	icon = "GFX_folksda_positiveaura"
+	icon_frame = 1
+	power = -15
+	cost = 0
+	component_set = "SDASET_SPACEPORT_AURAS"
+	size_restriction = { folksda_aura_station }
+	class_restriction = { shipclass_military_station }
+	friendly_aura = {
+		name = "aura_nanobot_cloud"
+		radius = 90
+		apply_on = ships
+		stack_info = {
+			id = spaceport_regen_aura
+			priority = 1
+		}
+		modifier = {
+			ship_auto_repair_add = 0.05
+			ship_shield_regen_add_perc = 0.2
+		}
+		graphics = {
+			area_effect = {
+				entity = "circle_area_entity"
+				dynamic_scale = yes
+			}
+			ship_effect = {
+				entity = "ship_aura_positive_entity"
+				dynamic_scale = no
+			}
+		}
+	}
+}
+

@@ -1,0 +1,366 @@
+namespace = folksda_aicontrol
+
+# war starts
+country_event = {
+	id = folksda_aicontrol.1
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		is_ai = yes
+		is_country_type = "default"
+	}
+	immediate = { set_country_flag = "folksda_throttlefleets" }
+}
+
+# when a war is over
+country_event = {
+	id = folksda_aicontrol.2
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { has_country_flag = "folksda_throttlefleets" }
+	immediate = {
+		remove_country_flag = "folksda_throttlefleets"
+		every_owned_fleet = {
+			limit = { has_fleet_flag = "folksda_disabled" }
+			set_event_locked = no
+			remove_fleet_flag = "folksda_disabled"
+		}
+	}
+}
+
+# this = ship, from=planet
+# ship has been built on a planet
+ship_event = {
+	id = folksda_aicontrol.100
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		owner = { has_country_flag = "folksda_throttlefleets" }
+		NOT = { is_ship_size = "orbital_station" }
+		is_ship_class = shipclass_military
+		NOT = {
+			from = { # planet
+				solar_system = {
+					any_ship_in_system = {
+						exists = owner
+						owner = { is_hostile = root.owner }
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				# If we have a big-ish fleet inside our own borders, we dont
+				# need to lock
+				OR = {
+					owner = {
+						any_owned_fleet = {
+							is_ship_class = shipclass_military
+							fleet_size > 19
+							exists = solar_system
+							solar_system = {
+								exists = space_owner
+								space_owner = { is_same_value = root.owner }
+							}
+						}
+					}
+					fleet = {
+						fleet_size > 19
+					}
+				}
+			}
+			# One of our fleets in our space can be considered
+			# large enough, and the AI will most likely merge
+			# all fleets with that one
+			owner = {
+				every_owned_fleet = {
+					limit = { has_fleet_flag = "folksda_disabled" }
+					remove_fleet_flag = "folksda_disabled"
+					set_event_locked = no
+				}
+			}
+			#fleet = {
+			#	set_event_locked = no
+			#	remove_fleet_flag = "folksda_disabled"
+			#}
+			else = {
+				fleet = {
+					set_event_locked = yes
+					set_fleet_flag = "folksda_disabled"
+				}
+			}
+		}
+	}
+}
+
+# MTTH: 1 monthly check
+country_event = {
+	id = folksda_aicontrol.200
+	hide_window = yes
+	mean_time_to_happen = { months = 1 }
+	trigger = { has_country_flag = "folksda_throttlefleets" }
+	immediate = {
+		every_owned_fleet = {
+			limit = {
+				has_fleet_flag = "folksda_disabled"
+				fleet_size > 19
+			}
+			remove_fleet_flag = "folksda_disabled"
+			set_event_locked = no
+		}
+	}
+}
+
+# on fleet enter system
+# From = System
+fleet_event = {
+	id = folksda_aicontrol.300
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = owner
+		exists = from
+		OR = {
+			is_ship_class = shipclass_military
+			is_ship_class = shipclass_transport
+		}
+		from = {
+			exists = space_owner
+			space_owner = {
+				has_country_flag = "folksda_throttlefleets"
+			}
+		}
+		owner = {
+			is_hostile = from.space_owner
+		}
+	}
+
+	immediate = {
+		from = {
+			every_fleet_in_system = {
+				limit = {
+					has_fleet_flag = "folksda_disabled"
+				}
+				set_event_locked = no
+				remove_fleet_flag = "folksda_disabled"
+			}
+		}
+	}
+}
+
+# planet transferred, unlock any fleets in system that are locked by us
+planet_event = {
+	id = folksda_aicontrol.350
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		solar_system = {
+			every_fleet_in_system = {
+				limit = {
+					has_fleet_flag = "folksda_disabled"
+				}
+				set_event_locked = no
+				remove_fleet_flag = "folksda_disabled"
+			}
+		}
+	}
+}
+
+# Console-triggered only
+planet_event = {
+	id = folksda_aicontrol.399
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			every_fleet_in_system = {
+				set_event_locked = no
+			}
+		}
+	}
+}
+
+# I've ran many tests and this event has never unlocked any
+# locked fleets, but I feel it is best to leave it in
+country_event = {
+	id = folksda_aicontrol.404
+	hide_window = yes
+	#is_triggered_only = yes
+	#picture = GFX_evt_alien_nature
+	#title = OK
+	#desc = {
+	#	trigger = { any_owned_fleet = { has_fleet_flag = "folksda_skittish_fleet" }}
+	#	text = "forcefully unlocking fleets"
+	#}
+	#desc = {
+	#	trigger = { NOT = { any_owned_fleet = { has_fleet_flag = "folksda_skittish_fleet" }}}
+	#	text = "no fleets to unlock"
+	#}
+	#option = { name = OK }
+	trigger = {
+		any_owned_fleet = {
+			has_fleet_flag = "folksda_skittish_fleet"
+		}
+	}
+	mean_time_to_happen = {
+		months = 3
+	}
+	immediate = {
+		every_owned_fleet = {
+			limit = { has_fleet_flag = "folksda_skittish_fleet" }
+			set_event_locked = no
+			remove_fleet_flag = "folksda_skittish_fleet"
+		}
+	}
+
+}
+
+# This event is not really attached to anything above.
+# It simply tries to prevent retard AIs from suiciding their ships too much.
+# on fleet enter system
+# From = System
+fleet_event = {
+	id = folksda_aicontrol.400
+	hide_window = yes
+	is_triggered_only = yes
+	#picture = GFX_evt_alien_nature
+	#title = OK
+
+	trigger = {
+		exists = owner
+		exists = from
+		is_ship_class = shipclass_military
+		owner = {
+			is_country_type = "default"
+			is_ai = yes
+		}
+		from = {
+			any_ship_in_system = {
+				exists = owner
+				is_ship_class = shipclass_military
+				owner = { is_hostile = root.owner }
+				fleet = { fleet_size > 4 }
+			}
+		}
+	}
+
+	#desc = "[This.SDAHostileSize] hostiles, we are only [This.SDABaseSize]"
+	#option = { name = OK }
+
+	immediate = {
+		set_variable = { which = SDABaseSize    value = 0 }
+		set_variable = { which = SDAHostileSize value = 0 }
+		fd_find_base_fleetpower = yes
+		from = { every_fleet_in_system = {
+			limit = {
+				exists = owner
+				is_ship_class = shipclass_military
+				owner = { is_hostile = root.owner }
+			}
+			fd_find_hostile_fleetpower = yes
+		} }
+		if = {
+			limit = {
+				check_variable = {
+					which = SDAHostileSize
+					value > -1
+				}
+				check_variable = {
+					which = SDABaseSize
+					value > -1
+				}
+				check_variable = {
+					which = SDAHostileSize
+					value > SDABaseSize
+				}
+			}
+			# closest_system = {
+			# 	limit = {
+			# 		NOT = {
+			# 			any_ship_in_system = {
+			# 				exists = owner
+			# 				is_ship_class = shipclass_military
+			# 				owner = { is_hostile = root.owner }
+			# 			}
+			# 		}
+			# 	}
+			# 	set_star_flag = "folksda_skittish_system"
+			# 	save_event_target_as = folksda_skittish_system
+			# }
+			#set_fleet_flag = "folksda_skittish_fleet"
+			#save_event_target_as = folksda_skittish_fleet
+			clear_fleet_actions = this
+			order_forced_return = yes
+			# queue_actions = {
+			# 	repeat = {
+			# 		max_iterations = 1
+			# 		find_closest_system = {
+			# 			trigger = {
+			# 				id = "folksda_aicontrol.401"
+			# 				is_same_value = event_target:folksda_skittish_system
+			# 			}
+			# 			found_system = {
+			# 				effect = {
+			# 					id = "folksda_aicontrol.401.lock.system"
+			# 					event_target:folksda_skittish_fleet = {
+			# 						set_event_locked = yes
+			# 					}
+			# 				}
+			# 				move_to = this
+			# 				find_closest_planet = {
+			# 					trigger = {
+			# 						id = "folksda_aicontrol.401.moveplanet"
+			# 						is_star = yes
+			# 					}
+			# 					found_planet = {
+			# 						effect = {
+			# 							id = "folksda_aicontrol.401.lock.planet"
+			# 							event_target:folksda_skittish_fleet = {
+			# 								set_event_locked = yes
+			# 							}
+			# 						}
+			# 						move_to = this
+			# 						wait = {
+			# 							duration = 5
+			# 						}
+			# 						effect = {
+			# 							id = "folksda_aicontrol.401.orbit_planet"
+			# 							event_target:folksda_skittish_fleet = {
+			# 								set_event_locked = no
+			# 								remove_fleet_flag = "folksda_skittish_fleet"
+			# 							}
+			# 							event_target:folksda_skittish_system = { remove_star_flag = "folksda_skittish_system" }
+			# 						}
+			# 					}
+			# 					failed = {
+			# 						effect = {
+			# 							id = "folksda_aicontrol.401.planetfailed"
+			# 							event_target:folksda_skittish_fleet = {
+			# 								set_event_locked = no
+			# 								remove_fleet_flag = "folksda_skittish_fleet"
+			# 							}
+			# 							event_target:folksda_skittish_system = { remove_star_flag = "folksda_skittish_system" }
+			# 						}
+			# 					}
+			# 				}
+			# 			}
+			# 			failed = {
+			# 				effect = {
+			# 					id = "folksda_aicontrol.401.systemfailed"
+			# 					event_target:folksda_skittish_fleet = {
+			# 						set_event_locked = no
+			# 						remove_fleet_flag = "folksda_skittish_fleet"
+			# 					}
+			# 					event_target:folksda_skittish_system = { remove_star_flag = "folksda_skittish_system" }
+			# 				}
+			# 			}
+			# 		}
+			# 	}
+			# }
+		}
+	}
+}

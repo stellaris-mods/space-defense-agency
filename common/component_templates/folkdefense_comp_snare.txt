@@ -1,0 +1,36 @@
+utility_component_template = {
+	key = "SPACE_DEFENSE_AGENCY_SNARE_AURA"
+	size = small
+	icon = "GFX_folksda_snare"
+	icon_frame = 1
+	power = -15
+	cost = 0
+	component_set = "SDASET_SPACEPORT_AURAS"
+	size_restriction = { folksda_aura_station }
+	class_restriction = { shipclass_military_station }
+	ftl_magnet = yes
+	hostile_aura = {
+		name = "aura_station_subspace_snare"
+		radius = 50
+		apply_on = fleets
+		stack_info = {
+			id = spaceport_snare_aura
+			priority = 2
+		}
+		modifier = {
+			ship_windup_mult = 4
+			ship_speed_mult = -0.5
+			fleet_emergency_ftl_min_days_mult = 1
+		}
+		graphics = {
+			area_effect = {
+				entity = "circle_area_entity"
+				dynamic_scale = yes
+			}
+			ship_effect = {
+				entity = "ship_aura_negative_entity"
+				dynamic_scale = no
+			}
+		}
+	}
+}

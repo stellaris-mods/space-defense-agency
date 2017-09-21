@@ -1,0 +1,73 @@
+﻿#l_english:
+#l_spanish:
+l_french:
+#l_german:
+#l_braz_por:
+#l_polish:
+#l_russian:
+
+shipsize_folk_invisible_station_upkeep_mult: "Upkeep"
+folk_invisible_station_upkeep_mult: "Upkeep"
+
+building_sdahq: "Agence de défense spatiale"
+building_sdahq_desc: "Construire le siège de l'Agence de défense spatiale."
+
+building_sdaoffice: "Space Defense Agency Office"
+building_sdaoffice_desc: "The SDA establishes a local presence that improves local army recruitment rates, offers them a higher standard of training, and improves the planetary fortifications.\n\n§GBuild more of these across your empire to increase the offensive capabilities of the SDA.§!"
+
+folk_invisible_station: "Agence de défense spatiale"
+folk_invisible_station_plural: "Agence de défense spatiale"
+# Global ship design name
+folk_invisible_hangar: "Trou de ver"
+
+sm_folksda_hangar_module: "Hangar militaire"
+sm_folksda_hangar_module_desc: "Permet à l'Agence de défense spatiale d'installer et d'exploiter un hangar pour les escadrons de vaisseaux de combat et de bombardiers pour aider à la défense de cette colonie."
+
+sm_folksda_snare_module: "Inhibiteur de sous-espace"
+sm_folksda_snare_module_desc: "L'Agence de défense spatiale installe et exploite un modulateur de champ sous-espace qui invalide efficacement les capacités FTL hostiles et agit également comme un aimant pour toutes les signatures FTL entrantes."
+
+sm_folksda_regen_module: "Modulateur de champ sous-espace (Allié)"
+sm_folksda_regen_module_desc: "L'Agence de défense spatiale installe et exploite un modulateur de champ sous-espace pour aider les vaisseaux amies dans l'espace local. En raison de la puissance limitée disponible sur une station spatiale, la portée est limitée à approximativement le même que notre portée de missile."
+
+sm_folksda_debuff_module: "Modulateur de champ sous-espace (Hostiles)"
+sm_folksda_debuff_module_desc: "L'Agence de défense spatiale installe et exploite un modulateur de champ sous-espace pour déstabiliser les vaisseaux hostiles dans l'espace local. En raison de la puissance limitée disponible sur une station spatiale, la portée est limitée à approximativement le même que notre portée de missile."
+
+sm_folksda_platform_module: "Agence de défense spatiale"
+sm_folksda_platform_module_desc: "Installe un bureau permanent pour les opérations locales sous-espace de l'Agence de défense spatiale."
+
+# The stuff below here doesn't need translation really, it's just for debugging.
+# Never shown ingame.
+
+SPACE_DEFENSE_AGENCY_REGENAURA: "Friendly Field"
+SPACE_DEFENSE_AGENCY_REGENAURA_DESC: "Combination of friendly auras."
+
+SPACE_DEFENSE_AGENCY_SNARE_AURA: "Orbital Snare Aura"
+SPACE_DEFENSE_AGENCY_SNARE_AURA_DESC: "Snare aura for the Spaceport"
+
+SPACE_DEFENSE_AGENCY_DEBUFFAURA: "Hostile Field"
+SPACE_DEFENSE_AGENCY_DEBUFFAURA_DESC: "Combination of hostile auras."
+SDASET_SPACEPORT_AURAS: "Spaceport Extension Components"
+SDASET_SPACEPORT_AURAS_DESC: "Component set fit for the spaceport extension."
+
+DEFENSEAGENCY_HANGAR_SECTION: "Hangar"
+SDASET_HANGAR: "Hangar Component Set"
+SDASET_HANGAR_DESC: "Component set fit for the Hangar section."
+
+DEFENSEAGENCY_PLATFORM_SECTION: "Office"
+
+SDA_REACTOR1: "Spaceport Reactor 1"
+SDA_REACTOR2: "Spaceport Reactor 2"
+SDA_REACTOR3: "Spaceport Reactor 3"
+SDA_REACTOR4: "Spaceport Reactor 4"
+
+SDASET_SHIELD: "Shield Component Set"
+SDASET_SHIELD_DESC: "Component set fit for the Office section."
+SDASHIELD1: "Spaceport Shields"
+
+SDASET_UTILITIES: "SDA Set"
+SDASET_UTILITIES_DESC: "SDA Set for Spaceport"
+
+SPACEDEFENSE_BOMBERS_1: "SDA Bombers"
+SPACEDEFENSE_FIGHTERS_1: "SDA Fighters 1"
+SPACEDEFENSE_FIGHTERS_2: "SDA Fighters 2"
+SPACEDEFENSE_FIGHTERS_3: "SDA Fighters 3"

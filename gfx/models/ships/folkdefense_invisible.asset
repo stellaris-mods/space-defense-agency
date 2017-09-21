@@ -1,0 +1,38 @@
+entity = {
+	name = "folk_invisible_station_entity"
+	pdxmesh = "wormhole_rings_mesh"
+	default_state = "start"
+	state = { name = "start" animation = "open" looping = no next_state = "looping"
+		event = { time = 0.0 particle = "wormhole_open_particle"  keep_particle = no trigger_once = yes }
+		event = { time = 0.7 particle = "wormhole_idle_particle"  keep_particle = yes trigger_once = yes }
+		event = { trigger_once = yes sound = { soundeffect = "ftl_wormhole_incoming_ship" } }
+	}
+	state = { name = "looping" animation = "idle"
+		event = { time = 0.0 node = "rings_center" particle = "wormhole_idle_particle"  keep_particle = yes trigger_once = yes sound = { soundeffect = "incoming_wormhole" } }
+	}
+
+	state = { name = "stop" animation = "close" looping = no animation_speed = 1}
+
+	locator = { name = "part1" }
+	scale = 1
+	game_data = {
+		uv_animation_speed   = -0.05
+		uv_animation_direction  = { 0.4 0.4 }
+	}
+}
+
+entity = {
+	name = "folk_invisible_section_entity"
+	pdxmesh = ""
+	scale = 1
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}

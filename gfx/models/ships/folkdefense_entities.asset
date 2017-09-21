@@ -1,0 +1,297 @@
+# XXX need fallen entities
+
+entity = {
+	name = "arthropoid_01_sdafighter_entity"
+	pdxmesh = "arthropoid_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "arthropoid_01_sdabomber_entity"
+	pdxmesh = "arthropoid_01_bomber_mesh"
+	scale = 1.5
+}
+
+entity = {
+	name = "avian_01_sdafighter_entity"
+	pdxmesh = "avian_01_fighter_mesh"
+	scale = 1.9
+}
+entity = {
+	name = "avian_01_sdabomber_entity"
+	pdxmesh = "avian_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "fungoid_01_sdafighter_entity"
+	pdxmesh = "fungoid_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "fungoid_01_sdabomber_entity"
+	pdxmesh = "fungoid_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "mammalian_01_sdafighter_entity"
+	pdxmesh = "mammalian_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "mammalian_01_sdabomber_entity"
+	pdxmesh = "mammalian_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "molluscoid_01_sdafighter_entity"
+	pdxmesh = "molluscoid_01_fighter_mesh"
+	scale = 1.8
+}
+entity = {
+	name = "molluscoid_01_sdabomber_entity"
+	pdxmesh = "molluscoid_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "plantoid_01_sdafighter_entity"
+	pdxmesh = "plantoid_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "plantoid_01_sdabomber_entity"
+	pdxmesh = "plantoid_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "reptilian_01_sdafighter_entity"
+	pdxmesh = "reptilian_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "reptilian_01_sdabomber_entity"
+	pdxmesh = "reptilian_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
+	name = "ai_01_orbital_station_spacedefense_empty_section_entity"
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+
+entity = {
+	name = "arthropoid_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "arthropoid_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0.0 node = "runway_light_right_01" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_right_02" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_right_03" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_right_04" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_right_05" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_right_06" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_right_07" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.35 node = "runway_light_right_08" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.4 node = "runway_light_right_09" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0.0 node = "runway_light_left_01" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_left_02" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_left_03" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_left_04" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_left_05" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_left_06" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_left_07" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.35 node = "runway_light_left_08" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.4 node = "runway_light_left_09" particle = "ship_light_orange_regular_effect" keep_particle = yes trigger_once = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+entity = {
+	name = "avian_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "avian_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 2
+		event = { time = 0.35 node = "runway_light_01" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_02" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_03" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_04" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_05" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_06" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_07" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "runway_light_08" particle = "ship_light_blue_rolling_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 1.6 node = "light_locator_end" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+entity = {
+	name = "fungoid_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "fungoid_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_green_effect" trigger_once = yes keep_particle = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+entity = {
+	name = "mammalian_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "mammalian_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0.0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+entity = {
+	name = "molluscoid_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "molluscoid_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0.0 node = "runway_light_left_01" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_left_02" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_left_03" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_left_04" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_left_05" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_left_06" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_left_07" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.0 node = "runway_light_right_01" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_right_02" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_right_03" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_right_04" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_right_05" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_right_06" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_right_07" particle = "ship_light_blue_regular_effect" keep_particle = yes trigger_once = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+entity = {
+	name = "plantoid_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "plantoid_01_orbital_station_hangarbay_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0.0 node = "runway_light_1_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_2_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_3_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_4_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_5_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_6_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_7_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.35 node = "runway_light_8_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.4 node = "runway_light_9_r" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0.0 node = "runway_light_1_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.05 node = "runway_light_2_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.1 node = "runway_light_3_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.15 node = "runway_light_4_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.2 node = "runway_light_5_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.25 node = "runway_light_6_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.3 node = "runway_light_7_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.35 node = "runway_light_8_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0.4 node = "runway_light_9_l" particle = "ship_light_yellow_regular_effect" keep_particle = yes trigger_once = yes }
+	}
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}
+
+
+entity = {
+	name = "reptilian_01_orbital_station_spacedefense_empty_section_entity"
+	pdxmesh = "reptilian_01_orbital_station_hangar_section_mesh"
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+	}
+	state = { name = "moving" state_time = 5
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+	}
+	state = { name = "death" state_time = 5 }
+	scale = 1.0
+	locator = { name = "part1" }
+	locator = { name = "part2" }
+	locator = { name = "part3" }
+	locator = { name = "part4" }
+	locator = { name = "part5" }
+	locator = { name = "part6" }
+	locator = { name = "part7" }
+	locator = { name = "part8" }
+	locator = { name = "part9" }
+	locator = { name = "part10" }
+}

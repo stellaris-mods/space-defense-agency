@@ -1,0 +1,27 @@
+ship_section_template = {
+	key = "DEFENSEAGENCY_DEBUFF_SECTION"
+	ship_size = orbital_station
+	entity = "orbital_station_spacedefense_empty_section_entity"
+	icon = "GFX_ship_part_core_mid"
+	fits_on_slot = "2"
+	fits_on_slot = "3"
+	fits_on_slot = "4"
+	fits_on_slot = "5"
+	fits_on_slot = "6"
+	fits_on_slot = "7"
+	fits_on_slot = "8"
+	fits_on_slot = "9"
+	fits_on_slot = "10"
+	fits_on_slot = "11"
+	fits_on_slot = "12"
+	fits_on_slot = "13"
+	fits_on_slot = "14"
+	fits_on_slot = "15"
+	fits_on_slot = "16"
+	fits_on_slot = "17"
+	fits_on_slot = "18"
+	fits_on_slot = "19"
+	fits_on_slot = "20"
+
+	cost = 0
+}

@@ -1,0 +1,227 @@
+ship_design = {
+	name = "Field Modulator F-103"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_REGENAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+ship_design = {
+	name = "Field Modulator H-741"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_DEBUFFAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+ship_design = {
+	name = "Field Modulator U-F0E"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_SNARE_AURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+ship_design = {
+	name = "Field Modulator U2-F0F"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_SNARE_AURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "2"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_DEBUFFAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+ship_design = {
+	name = "Field Modulator F2-104"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_REGENAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "2"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_DEBUFFAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+ship_design = {
+	name = "Field Modulator F2-105"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_REGENAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "2"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_SNARE_AURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}
+
+
+ship_design = {
+	name = "Field Modulator X3-F27"
+	ship_size = folksda_aura_station
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "1"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_DEBUFFAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "2"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_REGENAURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+	section = {
+		template = "SDA_AURA_STATION_SECTION"
+		slot = "3"
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SPACE_DEFENSE_AGENCY_SNARE_AURA"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_1"
+			template = "MEDIUM_SHIELD_1"
+		}
+		component = {
+			slot = "MEDIUM_UTILITY_2"
+			template = "MEDIUM_FISSION_REACTOR"
+		}
+	}
+}

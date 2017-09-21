@@ -1,0 +1,20 @@
+
+utility_component_template = {
+	can_recharge_shield = yes
+	key = "SDASHIELD1"
+	size = aux
+	icon = "GFX_ship_part_shield_5"
+	icon_frame = 1
+	power = 0
+	cost = 0
+	hidden = yes
+	modifier = {
+		ship_shield_hp_add = 6500
+		ship_shield_regen_add = 25
+	}
+	size_restriction = { orbital_station }
+	# size_restriction is not enough for aux slot apparently
+	class_restriction = { shipclass_orbital_station }
+	component_set = "SDASET_SHIELD"
+	ai_weight = { weight = 8995 }
+}

@@ -1,0 +1,431 @@
+
+# country scope
+fd_ensure_office_count = {
+	set_variable = {
+		which = "temp_counter"
+		value = 0
+	}
+	every_owned_planet = {
+		set_planet_flag = "folk_not_counted"
+	}
+	while = {
+		limit = {
+			any_owned_planet {
+				has_planet_flag = "folk_not_counted"
+			}
+		}
+		# XXX check that we also actually control the planet
+		random_owned_planet = {
+			limit = {
+				has_planet_flag = "folk_not_counted"
+			}
+			if = {
+				limit = {
+					any_tile = {
+						has_building = building_sdaoffice
+					}
+				}
+				prev = {
+					change_variable = {
+						which = "temp_counter"
+						value = 1 # +1
+					}
+				}
+			}
+			# Make sure we dont loop forever
+			remove_planet_flag = "folk_not_counted"
+			# And then we loop with while{}
+		}
+	}
+	# Not sure why I used a temp_counter variable. Probably for teh lulz.
+	set_variable = {
+		which = "SDAPlanetaryOfficeCount"
+		value = "temp_counter"
+	}
+}
+
+# root/this is the country scope
+fd_get_wormhole_hp = {
+	random_owned_ship = {
+		limit = {
+			has_ship_flag = "folksda_platform_invis_ship"
+			fleet = { is_same_value = event_target:folksda_wormholefleet }
+		}
+		switch = {
+			trigger = has_hp
+			2390 > { root = { set_variable = { which = SDABaseWormholeHP value = 2400 } } } #100%
+			2270 > { root = { set_variable = { which = SDABaseWormholeHP value = 2280 } } } #90%
+			2150 > { root = { set_variable = { which = SDABaseWormholeHP value = 2160 } } } #80%
+			2030 > { root = { set_variable = { which = SDABaseWormholeHP value = 2040 } } } #70%
+			1910 > { root = { set_variable = { which = SDABaseWormholeHP value = 1920 } } } #60%
+			1790 > { root = { set_variable = { which = SDABaseWormholeHP value = 1800 } } } #50%
+			1670 > { root = { set_variable = { which = SDABaseWormholeHP value = 1680 } } } #40%
+			1550 > { root = { set_variable = { which = SDABaseWormholeHP value = 1560 } } } #30%
+			1430 > { root = { set_variable = { which = SDABaseWormholeHP value = 1440 } } } #20%
+			1310 > { root = { set_variable = { which = SDABaseWormholeHP value = 1320 } } } #10%
+			default = {
+				root = { set_variable = { which = SDABaseWormholeHP value = 1200 } }
+			}
+		}
+	}
+}
+
+# prev is the hostile fleet
+# this is the owner of the incoming wormholes
+fd_count_hitpoints = {
+	# First we need to save a reference to the fleet
+	# = folksda_targetfleet
+	set_variable = {
+		which = SDAFleetHP
+		value = 0
+	}
+	# Then we need to save the owner
+	# actually we dont any more because I changed how it works, but
+	# I dont want to re-analyze the scopes here
+	prev = { owner = { save_event_target_as = fd_count_owner } }
+	# Then we scope to the owner, check every_owned_ship that is
+	# in the same fleet
+	event_target:fd_count_owner = {
+		every_owned_ship = {
+			limit = {
+				fleet = { is_same_value = event_target:folksda_targetfleet }
+			}
+			switch = {
+				trigger = has_hp
+				9999 > { prevprev = { change_variable = { which = SDAFleetHP value = 10000 } } }
+				8999 > { prevprev = { change_variable = { which = SDAFleetHP value = 9000 } } }
+				7999 > { prevprev = { change_variable = { which = SDAFleetHP value = 8000 } } }
+				6999 > { prevprev = { change_variable = { which = SDAFleetHP value = 7000 } } }
+				5999 > { prevprev = { change_variable = { which = SDAFleetHP value = 6000 } } }
+				4999 > { prevprev = { change_variable = { which = SDAFleetHP value = 5000 } } }
+				3999 > { prevprev = { change_variable = { which = SDAFleetHP value = 4000 } } }
+				2999 > { prevprev = { change_variable = { which = SDAFleetHP value = 3000 } } }
+				1999 > { prevprev = { change_variable = { which = SDAFleetHP value = 2000 } } }
+				999  > { prevprev = { change_variable = { which = SDAFleetHP value = 1000 } } }
+				799  > { prevprev = { change_variable = { which = SDAFleetHP value = 800 } } }
+				599  > { prevprev = { change_variable = { which = SDAFleetHP value = 600 } } }
+				399  > { prevprev = { change_variable = { which = SDAFleetHP value = 400 } } }
+				199  > { prevprev = { change_variable = { which = SDAFleetHP value = 200 } } }
+				default = {
+					prevprev = { change_variable = { which = SDAFleetHP value = 100 } }
+				}
+			}
+		}
+	}
+}
+
+# I know it says FP, but we just use the fleet size.
+fd_find_base_fleetpower = {
+	switch = {
+		trigger = fleet_size
+		999 > { change_variable = { which = SDABaseSize value = 1000 } }
+		899 > { change_variable = { which = SDABaseSize value = 900 } }
+		799 > { change_variable = { which = SDABaseSize value = 800 } }
+		699 > { change_variable = { which = SDABaseSize value = 700 } }
+		599 > { change_variable = { which = SDABaseSize value = 600 } }
+		499 > { change_variable = { which = SDABaseSize value = 500 } }
+		399 > { change_variable = { which = SDABaseSize value = 400 } }
+		299 > { change_variable = { which = SDABaseSize value = 300 } }
+		199 > { change_variable = { which = SDABaseSize value = 200 } }
+		99  > { change_variable = { which = SDABaseSize value = 100 } }
+		79  > { change_variable = { which = SDABaseSize value = 80 } }
+		59  > { change_variable = { which = SDABaseSize value = 60 } }
+		39  > { change_variable = { which = SDABaseSize value = 40 } }
+		19  > { change_variable = { which = SDABaseSize value = 20 } }
+		default = {
+			change_variable = { which = SDABaseSize value = 10 }
+		}
+	}
+	multiply_variable = {
+		which = SDABaseSize
+		value = 1.75
+	}
+}
+
+fd_find_hostile_fleetpower = {
+	switch = {
+		trigger = fleet_size
+		999 > { prevprev = { change_variable = { which = SDAHostileSize value = 1000 } } }
+		899 > { prevprev = { change_variable = { which = SDAHostileSize value = 900 } } }
+		799 > { prevprev = { change_variable = { which = SDAHostileSize value = 800 } } }
+		699 > { prevprev = { change_variable = { which = SDAHostileSize value = 700 } } }
+		599 > { prevprev = { change_variable = { which = SDAHostileSize value = 600 } } }
+		499 > { prevprev = { change_variable = { which = SDAHostileSize value = 500 } } }
+		399 > { prevprev = { change_variable = { which = SDAHostileSize value = 400 } } }
+		299 > { prevprev = { change_variable = { which = SDAHostileSize value = 300 } } }
+		199 > { prevprev = { change_variable = { which = SDAHostileSize value = 200 } } }
+		99  > { prevprev = { change_variable = { which = SDAHostileSize value = 100 } } }
+		79  > { prevprev = { change_variable = { which = SDAHostileSize value = 80 } } }
+		59  > { prevprev = { change_variable = { which = SDAHostileSize value = 60 } } }
+		39  > { prevprev = { change_variable = { which = SDAHostileSize value = 40 } } }
+		19  > { prevprev = { change_variable = { which = SDAHostileSize value = 20 } } }
+		default = {
+			prevprev = { change_variable = { which = SDAHostileSize value = 10 } }
+		}
+	}
+}
+
+# We can't just keep recreating the fleet every month because when we do set_location to the
+# old station that we replace, it doesn't get an orbit above the planet. So we need to set a flag
+# on the station and check if it needs to be recreated.
+# The reason we use flags instead of a variable is so that we can switch{} on it
+
+fd_updated_aura_station = {
+	remove_planet_flag = "sda_aura_type_1"
+	remove_planet_flag = "sda_aura_type_2"
+	remove_planet_flag = "sda_aura_type_3"
+	remove_planet_flag = "sda_aura_type_4"
+	remove_planet_flag = "sda_aura_type_5"
+	remove_planet_flag = "sda_aura_type_6"
+	remove_planet_flag = "sda_aura_type_7"
+
+	if = {
+		limit = {
+			AND = {
+				has_spaceport_module = folksda_debuff_module
+				has_spaceport_module = folksda_regen_module
+				has_spaceport_module = folksda_snare_module
+			}
+		}
+		set_planet_flag = "sda_aura_type_7"
+		else = {
+			if = {
+				limit = {
+					AND = {
+						has_spaceport_module = folksda_debuff_module
+						has_spaceport_module = folksda_regen_module
+					}
+				}
+				set_planet_flag = "sda_aura_type_6"
+				else = {
+					if = {
+						limit = {
+							AND = {
+								has_spaceport_module = folksda_debuff_module
+								has_spaceport_module = folksda_snare_module
+							}
+						}
+						set_planet_flag = "sda_aura_type_5"
+						else = {
+							if = {
+								limit = {
+									AND = {
+										has_spaceport_module = folksda_regen_module
+										has_spaceport_module = folksda_snare_module
+									}
+								}
+								set_planet_flag = "sda_aura_type_4"
+								else = {
+									switch = {
+										trigger = has_spaceport_module
+										folksda_regen_module = {
+											set_planet_flag = "sda_aura_type_3"
+										}
+										folksda_snare_module = {
+											set_planet_flag = "sda_aura_type_2"
+										}
+										folksda_debuff_module = {
+											set_planet_flag = "sda_aura_type_1"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	remove_planet_flag = sda_keep_station
+
+	owner = {
+		if = {
+			limit = {
+				any_owned_fleet = {
+					is_ship_size = folksda_aura_station
+					exists = orbit
+					orbit = { is_same_value = prevprevprev }
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_ship_size = folksda_aura_station
+					exists = orbit
+					orbit = { is_same_value = prevprevprev }
+				}
+				switch = {
+					trigger = has_fleet_flag
+					sda_aura_type_1 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_1 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_2 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_2 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_3 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_3 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_4 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_4 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_5 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_5 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_6 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_6 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+					sda_aura_type_7 = {
+						if = {
+							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_7 } } }
+							delete_fleet = this
+							else = { prevprev = { set_planet_flag = sda_keep_station } }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { NOT = { has_planet_flag = sda_keep_station } }
+		switch = {
+			trigger = has_planet_flag
+			sda_aura_type_1 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_1"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator H-741"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_2 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_2"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator U-F0E"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_3 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_3"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator F-103"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_4 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_4"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator F2-105"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_5 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_5"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator U2-F0F"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_6 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_6"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator F2-104"
+						}
+						set_location = prev
+					}
+				}
+			}
+			sda_aura_type_7 = {
+				create_fleet = {
+					name = "Spaceport Extension"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = prev.owner
+						set_fleet_flag = "sda_aura_type_7"
+						create_ship = {
+							name = ""
+							prefix = no
+							design = "Field Modulator X3-F27"
+						}
+						set_location = prev
+					}
+				}
+			}
+		}
+	}
+}
+

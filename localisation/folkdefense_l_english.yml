@@ -1,0 +1,77 @@
+﻿l_english:
+#l_spanish:
+#l_french:
+#l_german:
+#l_braz_por:
+#l_polish:
+#l_russian:
+
+shipsize_folk_invisible_station_upkeep_mult: "Upkeep"
+folk_invisible_station_upkeep_mult: "Upkeep"
+
+building_sdahq: "Space Defense Agency HQ"
+building_sdahq_desc: "The headquarters allow the Space Defense Agency to deploy automated drone-based subspace interception squads that attack and hinder the progression of hostile actors. They will only target military fleets that enter controlled solar systems where they have a local planet presence."
+
+building_sdaoffice: "Space Defense Agency Office"
+building_sdaoffice_desc: "The SDA establishes a local presence that improves local army recruitment rates, offers them a higher standard of training, and improves the planetary fortifications.\n\n§GBuild more of these across your empire to increase the offensive capabilities of the SDA.§!"
+
+folksda_aura_station: "Field Modulator Satellite"
+folksda_aura_station_plural: "Field Modulator Satellites"
+
+folk_invisible_station: "Space Defense Agency"
+folk_invisible_station_plural: "Space Defense Agency"
+# Global ship design name
+folk_invisible_hangar: "Wormhole"
+
+sm_folksda_hangar_module: "Military Hangar"
+sm_folksda_hangar_module_desc: "Allows the Space Defense Agency to install and operate a hangar for squadrons of fighter- and bomber-crafts to assist in the defense of this colony."
+
+sm_folksda_snare_module: "Subspace Inhibitor"
+sm_folksda_snare_module_desc: "The Space Defense Agency installs and operates a subspace field modulator that effectively cripples unfriendly FTL capabilities and also acts as a magnet for any incoming FTL signatures."
+
+sm_folksda_regen_module: "Subspace Field Modulator (Allied)"
+sm_folksda_regen_module_desc: "The Space Defense Agency installs and operates a subspace field modulator to assist friendly ships in local space. Due to the limited power available on a space station, the range is limited to roughly the same as our missile range."
+
+sm_folksda_debuff_module: "Subspace Field Modulator (Hostiles)"
+sm_folksda_debuff_module_desc: "The Space Defense Agency installs and operates a subspace field modulator to destabilize hostile ships in local space. Due to the limited power available on a space station, the range is limited to roughly the same as our missile range."
+
+sm_folksda_platform_module: "Space Defense Agency"
+sm_folksda_platform_module_desc: "Installs a permanent office for local subspace operations of the Space Defense Agency."
+
+# The stuff below here doesn't need translation really, it's just for debugging.
+# Never shown ingame.
+
+SPACE_DEFENSE_AGENCY_REGENAURA: "Friendly Field"
+SPACE_DEFENSE_AGENCY_REGENAURA_DESC: "Combination of friendly auras."
+
+SPACE_DEFENSE_AGENCY_SNARE_AURA: "Orbital Snare Aura"
+SPACE_DEFENSE_AGENCY_SNARE_AURA_DESC: "Snare aura for the Spaceport"
+
+SPACE_DEFENSE_AGENCY_DEBUFFAURA: "Hostile Field"
+SPACE_DEFENSE_AGENCY_DEBUFFAURA_DESC: "Combination of hostile auras."
+SDASET_SPACEPORT_AURAS: "Spaceport Extension Components"
+SDASET_SPACEPORT_AURAS_DESC: "Component set fit for the spaceport extension."
+
+DEFENSEAGENCY_HANGAR_SECTION: "Hangar"
+SDASET_HANGAR: "Hangar Component Set"
+SDASET_HANGAR_DESC: "Component set fit for the Hangar section."
+
+DEFENSEAGENCY_PLATFORM_SECTION: "Office"
+
+SDA_REACTOR1: "Spaceport Reactor 1"
+SDA_REACTOR2: "Spaceport Reactor 2"
+SDA_REACTOR3: "Spaceport Reactor 3"
+SDA_REACTOR4: "Spaceport Reactor 4"
+
+SDASET_SHIELD: "Shield Component Set"
+SDASET_SHIELD_DESC: "Component set fit for the Office section."
+SDASHIELD1: "Spaceport Shields"
+
+SDASET_UTILITIES: "SDA Set"
+SDASET_UTILITIES_DESC: "SDA Set for Spaceport"
+
+SPACEDEFENSE_BOMBERS_1: "SDA Bombers"
+SPACEDEFENSE_FIGHTERS_1: "SDA Fighters 1"
+SPACEDEFENSE_FIGHTERS_2: "SDA Fighters 2"
+SPACEDEFENSE_FIGHTERS_3: "SDA Fighters 3"
+SPACEDEFENSE_STINGERS: "SDA Stingers"

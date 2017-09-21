@@ -1,0 +1,36 @@
+utility_component_template = {
+	key = "SPACE_DEFENSE_AGENCY_DEBUFFAURA"
+	size = small
+	icon = "GFX_folksda_negativeaura"
+	icon_frame = 1
+	power = -15
+	cost = 0
+	component_set = "SDASET_SPACEPORT_AURAS"
+	size_restriction = { folksda_aura_station }
+	class_restriction = { shipclass_military_station }
+	hostile_aura = {
+		name = "aura_quantum_destabilizer"
+		radius = 110
+		apply_on = ships
+		stack_info = {
+			id = spaceport_hostile_aura
+			priority = 3
+		}
+		modifier = {
+			ship_shield_hp_mult = -0.25
+			ship_shield_regen_add_perc = -0.05
+			ship_fire_rate_mult = -0.15
+		}
+		graphics = {
+			area_effect = {
+				entity = "circle_area_entity"
+				dynamic_scale = yes
+			}
+			ship_effect = {
+				entity = "ship_aura_negative_entity"
+				dynamic_scale = no
+			}
+		}
+	}
+}
+

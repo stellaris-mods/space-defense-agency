@@ -1,0 +1,35 @@
+ship_section_template = {
+	key = "FOLK_INVIS_SECTION"
+	ship_size = folk_invisible_station
+	fits_on_slot = "1"
+	entity = "folk_invisible_section_entity"
+	icon = "GFX_ship_part_core_mid"
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = extra_large
+		slot_type = strike_craft
+		rotation = 0
+		locatorname = "part1"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "part2"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = medium
+		slot_type = strike_craft
+		rotation = 180
+		locatorname = "part3"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = small
+		slot_type = strike_craft
+		rotation = 270
+		locatorname = "part4"
+	}
+}

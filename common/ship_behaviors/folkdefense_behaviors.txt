@@ -1,0 +1,75 @@
+@engagement_range = 140
+@return_range = 300
+
+# TODO: Find some way to make the target selection per-ship more random
+# and increase the number of ships instead
+# So that they don't move around clumped up
+
+# We can also solve it by simply having lots of hangars with different behaviors
+# and attack_ranges and attack_move_patterns
+
+# Not sure how to get more than 3, but haven't tested yet.
+# Fear that the slots on the section will be filled by just one type
+
+ship_behavior = {
+	name = "sdafighters_behavior"
+	preferred_attack_range = 7
+	formation_distance = @engagement_range
+	return_to_formation_distance = @return_range
+
+	attack_move_pattern = orbit
+	passive_move_pattern = charge
+
+	targeting = {
+		keep_previous_target_bonus		= 50
+		low_health_bonus				= 100
+		already_incoming_damage_penalty = 2
+		distance_to_fleet_penalty		= 10
+	}
+}
+ship_behavior = {
+	name = "sdafighters_small_behavior"
+	preferred_attack_range = 5
+	formation_distance = @engagement_range
+	return_to_formation_distance = @return_range
+
+	attack_move_pattern = orbit
+	passive_move_pattern = charge
+
+	targeting = {
+		keep_previous_target_bonus		= 50
+		low_health_bonus				= 100
+		already_incoming_damage_penalty = 2
+		distance_to_fleet_penalty		= 10
+	}
+}
+ship_behavior = {
+	name = "sdafighters_xl_behavior"
+	preferred_attack_range = 3
+	formation_distance = @engagement_range
+	return_to_formation_distance = @return_range
+
+	attack_move_pattern = orbit
+	passive_move_pattern = charge
+
+	targeting = {
+		keep_previous_target_bonus		= 50
+		low_health_bonus				= 100
+		already_incoming_damage_penalty = 2
+		distance_to_fleet_penalty		= 10
+	}
+}
+
+ship_behavior = {
+	name = "sdabombers_behavior"
+	preferred_attack_range = 11
+	formation_distance = @engagement_range
+	return_to_formation_distance = @return_range
+	attack_move_pattern = orbit
+	passive_move_pattern = charge
+	targeting = {
+		low_health_bonus				= 1000
+		already_incoming_damage_penalty = 10
+		distance_to_fleet_penalty		= 10
+	}
+}

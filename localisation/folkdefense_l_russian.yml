@@ -1,0 +1,77 @@
+﻿#l_english:
+#l_spanish:
+#l_french:
+#l_german:
+#l_braz_por:
+#l_polish:
+l_russian:
+
+shipsize_folk_invisible_station_upkeep_mult: "Содержание"
+folk_invisible_station_upkeep_mult: "Содержание"
+
+building_sdahq: "Штаб агентства космической обороны"
+building_sdahq_desc: "Построить штаб-квартиру агентства космической обороны."
+
+building_sdaoffice: "Офис агентства космической обороны"
+building_sdaoffice_desc: "АКО устанавливает локальное присутствие, что повышает скорость найма местной армии, предлагает им более высокий уровень подготовки, а также улучшает планетарные укрепления.\n\n§GСтройте больше подобных сооружений по всей вашей империи, чтобы улучшить наступательные возможности АКО.§!"
+
+folksda_aura_station: "Спутник модуляции поля"
+folksda_aura_station_plural: "Спутники модуляции поля"
+
+folk_invisible_station: "Агентство космической обороны"
+folk_invisible_station_plural: "Агентство космической обороны"
+# Global ship design name
+folk_invisible_hangar: "Червоточина"
+
+sm_folksda_hangar_module: "Военный ангар"
+sm_folksda_hangar_module_desc: "Позволяет агентству космической обороны устанавливать и эксплуатировать ангар эскадрильями истребителей и бомбардировщиков для оказания помощи в защите этой колонии."
+
+sm_folksda_snare_module: "Подпростанственный ингибитор"
+sm_folksda_snare_module_desc: "Агентство космической обороны устанавливает и обслуживает модулятор подпространственного поля, который эффективно наносит вред возможностям вражеских сверхсветовых двигателей, а также действует как магнит для любых входящих сверхсветовых сигнатур."
+
+sm_folksda_regen_module: "Модулятор подпространственного поля (Свой)"
+sm_folksda_regen_module_desc: "Агентство космической обороны  устанавливает и обслуживает модулятор подпространственного поля, чтобы помогать дружественным кораблям в локальном пространстве. В связи с ограниченностью доступной энергии на космической станции, дальность действия ограничивается на расстояние, грубо говоря, как и у рокет."
+
+sm_folksda_debuff_module: "Модулятор подпространственного поля (Чужой)"
+sm_folksda_debuff_module_desc: "Агентство космической обороны  устанавливает и обслуживает модулятор подпространственного поля, чтобы дестабилизировать враждебные корабли в локальном пространстве. В связи с ограниченностью доступной энергии на космической станции, дальность действия ограничивается на расстояние, грубо говоря, как и у рокет."
+
+sm_folksda_platform_module: "Агентство космической обороны"
+sm_folksda_platform_module_desc: "Устанавливает постоянный офис для местных подпространственных операций агентства космической обороны."
+
+# The stuff below here doesn't need translation really, it's just for debugging.
+# Never shown ingame.
+
+SPACE_DEFENSE_AGENCY_REGENAURA: "Friendly Field"
+SPACE_DEFENSE_AGENCY_REGENAURA_DESC: "Combination of friendly auras."
+
+SPACE_DEFENSE_AGENCY_SNARE_AURA: "Orbital Snare Aura"
+SPACE_DEFENSE_AGENCY_SNARE_AURA_DESC: "Snare aura for the Spaceport"
+
+SPACE_DEFENSE_AGENCY_DEBUFFAURA: "Hostile Field"
+SPACE_DEFENSE_AGENCY_DEBUFFAURA_DESC: "Combination of hostile auras."
+SDASET_SPACEPORT_AURAS: "Spaceport Extension Components"
+SDASET_SPACEPORT_AURAS_DESC: "Component set fit for the spaceport extension."
+
+DEFENSEAGENCY_HANGAR_SECTION: "Hangar"
+SDASET_HANGAR: "Hangar Component Set"
+SDASET_HANGAR_DESC: "Component set fit for the Hangar section."
+
+DEFENSEAGENCY_PLATFORM_SECTION: "Office"
+
+SDA_REACTOR1: "Spaceport Reactor 1"
+SDA_REACTOR2: "Spaceport Reactor 2"
+SDA_REACTOR3: "Spaceport Reactor 3"
+SDA_REACTOR4: "Spaceport Reactor 4"
+
+SDASET_SHIELD: "Shield Component Set"
+SDASET_SHIELD_DESC: "Component set fit for the Office section."
+SDASHIELD1: "Spaceport Shields"
+
+SDASET_UTILITIES: "SDA Set"
+SDASET_UTILITIES_DESC: "SDA Set for Spaceport"
+
+SPACEDEFENSE_BOMBERS_1: "SDA Bombers"
+SPACEDEFENSE_FIGHTERS_1: "SDA Fighters 1"
+SPACEDEFENSE_FIGHTERS_2: "SDA Fighters 2"
+SPACEDEFENSE_FIGHTERS_3: "SDA Fighters 3"
+SPACEDEFENSE_STINGERS: "SDA Stingers"
