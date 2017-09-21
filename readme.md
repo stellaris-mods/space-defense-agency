@@ -2,8 +2,6 @@
 
 # Ideas from players
 
-XXX Remember that 1.8 fixes single ships racing off to fight large fleets, so remove the locking mechanisms in folksda_aicontrol.
-
 Changes for next push:
 * Fix event locked fleets on planet transfer
 
