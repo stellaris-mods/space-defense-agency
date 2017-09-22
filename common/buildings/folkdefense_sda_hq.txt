@@ -1,6 +1,7 @@
 building_sdahq = {
 	base_buildtime = 720
 	empire_unique = yes
+	planet_unique = yes
 	ai_replace = no
 
 	cost = {
@@ -8,7 +9,7 @@ building_sdahq = {
 	}
 
 	produced_resources = {
-		engineering_research = 3
+		engineering_research = 5
 		unity = 1
 	}
 
@@ -16,10 +17,19 @@ building_sdahq = {
 		energy = 5
 	}
 
+	country_modifier = {
+		all_technology_research_speed = 0.05
+	}
+
 	potential = {
 		planet = {
 			NOT = { is_planet_class = pc_habitat }
+			is_capital = yes
 		}
+	}
+
+	destroy_if = {
+		planet = { is_capital = no }
 	}
 
 	allow = {
@@ -39,9 +49,9 @@ building_sdahq = {
 		}
 	}
 
-	# XXX Should re-weight now that vanilla values in 1.8.0 are more sane
+	# XXX Check weights
 	ai_weight = {
-		weight = 9500
+		weight = 50
 	}
 }
 
@@ -97,23 +107,27 @@ building_sdaoffice = {
 				}
 			}
 			fromfrom = {
-				any_owned_planet = {
+				capital_scope = {
 					has_building = building_sdahq
 				}
 			}
 		}
 	}
 
-	# XXX Should re-weight now that vanilla values in 1.8.0 are more sane
+	# XXX Check weights
 	ai_weight = {
-		weight = 9000
+		weight = 30
 		modifier = {
-			weight = 5000
+			weight = 5
 			from = {
 				owner = {
 					fd_atleast_four_offices = yes
 				}
 			}
+		}
+		modifier = {
+			weight = 10
+			has_building = building_sdahq
 		}
 	}
 }

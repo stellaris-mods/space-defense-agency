@@ -5,11 +5,31 @@ sda_autobuild = {
 		limit = {
 			free_building_tiles > 0
 			num_pops > 3
-			NOR = {
-				has_building = building_sdaoffice
+			OR = {
 				AND = {
+					NOT = { has_building = building_sdaoffice }
+					is_capital = no
+					owner = {
+						capital_scope = {
+							has_building = building_sdahq
+						}
+						OR = {
+							is_ai = no
+							fd_atleast_four_offices = no
+						}
+					}
+				}
+				AND = {
+					NOT = { has_building = building_sdahq }
 					is_capital = yes
+				}
+				AND = {
 					has_building = building_sdahq
+					NOT = { has_building = building_sdaoffice }
+					is_capital = yes
+					any_tile = {
+						sda_build_tile_perfect = yes
+					}
 				}
 			}
 			any_tile = { # Can we build anywhere anyway?

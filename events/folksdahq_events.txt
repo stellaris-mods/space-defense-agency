@@ -21,7 +21,7 @@ fleet_event = {
 			AND = {
 				FROM = {
 					space_owner = {
-						any_owned_planet = {
+						capital_scope = {
 							has_building = building_sdahq
 						}
 					}
@@ -58,7 +58,7 @@ fleet_event = {
 						is_occupied_flag = yes
 						exists = controller
 						controller = {
-							any_owned_planet = {
+							capital_scope = {
 								has_building = building_sdahq
 							}
 							# Only if we actually declared war on someone,
@@ -74,7 +74,6 @@ fleet_event = {
 				}
 			}
 		}
-
 	}
 
 	immediate = {
@@ -118,7 +117,7 @@ fleet_event = {
 							is_occupied_flag = yes
 							exists = controller
 							controller = {
-								any_owned_planet = {
+								capital_scope = {
 									has_building = building_sdahq
 								}
 							}

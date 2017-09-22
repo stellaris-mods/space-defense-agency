@@ -93,4 +93,3 @@ sda_build_tile_subpar = {
 	has_building = no
 	has_building_construction = no
 }
-
