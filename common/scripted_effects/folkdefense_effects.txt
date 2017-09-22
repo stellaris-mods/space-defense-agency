@@ -114,57 +114,6 @@ fd_count_hitpoints = {
 	}
 }
 
-# I know it says FP, but we just use the fleet size.
-fd_find_base_fleetpower = {
-	switch = {
-		trigger = fleet_size
-		999 > { change_variable = { which = SDABaseSize value = 1000 } }
-		899 > { change_variable = { which = SDABaseSize value = 900 } }
-		799 > { change_variable = { which = SDABaseSize value = 800 } }
-		699 > { change_variable = { which = SDABaseSize value = 700 } }
-		599 > { change_variable = { which = SDABaseSize value = 600 } }
-		499 > { change_variable = { which = SDABaseSize value = 500 } }
-		399 > { change_variable = { which = SDABaseSize value = 400 } }
-		299 > { change_variable = { which = SDABaseSize value = 300 } }
-		199 > { change_variable = { which = SDABaseSize value = 200 } }
-		99  > { change_variable = { which = SDABaseSize value = 100 } }
-		79  > { change_variable = { which = SDABaseSize value = 80 } }
-		59  > { change_variable = { which = SDABaseSize value = 60 } }
-		39  > { change_variable = { which = SDABaseSize value = 40 } }
-		19  > { change_variable = { which = SDABaseSize value = 20 } }
-		default = {
-			change_variable = { which = SDABaseSize value = 10 }
-		}
-	}
-	multiply_variable = {
-		which = SDABaseSize
-		value = 1.75
-	}
-}
-
-fd_find_hostile_fleetpower = {
-	switch = {
-		trigger = fleet_size
-		999 > { prevprev = { change_variable = { which = SDAHostileSize value = 1000 } } }
-		899 > { prevprev = { change_variable = { which = SDAHostileSize value = 900 } } }
-		799 > { prevprev = { change_variable = { which = SDAHostileSize value = 800 } } }
-		699 > { prevprev = { change_variable = { which = SDAHostileSize value = 700 } } }
-		599 > { prevprev = { change_variable = { which = SDAHostileSize value = 600 } } }
-		499 > { prevprev = { change_variable = { which = SDAHostileSize value = 500 } } }
-		399 > { prevprev = { change_variable = { which = SDAHostileSize value = 400 } } }
-		299 > { prevprev = { change_variable = { which = SDAHostileSize value = 300 } } }
-		199 > { prevprev = { change_variable = { which = SDAHostileSize value = 200 } } }
-		99  > { prevprev = { change_variable = { which = SDAHostileSize value = 100 } } }
-		79  > { prevprev = { change_variable = { which = SDAHostileSize value = 80 } } }
-		59  > { prevprev = { change_variable = { which = SDAHostileSize value = 60 } } }
-		39  > { prevprev = { change_variable = { which = SDAHostileSize value = 40 } } }
-		19  > { prevprev = { change_variable = { which = SDAHostileSize value = 20 } } }
-		default = {
-			prevprev = { change_variable = { which = SDAHostileSize value = 10 } }
-		}
-	}
-}
-
 # We can't just keep recreating the fleet every month because when we do set_location to the
 # old station that we replace, it doesn't get an orbit above the planet. So we need to set a flag
 # on the station and check if it needs to be recreated.
