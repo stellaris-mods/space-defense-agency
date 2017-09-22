@@ -97,7 +97,9 @@ building_sdaoffice = {
 				}
 			}
 			fromfrom = {
-				has_country_flag = "folksda_hashq"
+				any_owned_planet = {
+					has_building = building_sdahq
+				}
 			}
 		}
 	}

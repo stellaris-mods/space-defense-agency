@@ -19,24 +19,6 @@ on_building_complete = {
 	}
 }
 
-# A building construction has finished, replacing another building.
-# This = Planet
-# From = Tile
-on_building_replaced = {
-	events = {
-		folksdahq.2
-	}
-}
-
-# A building construction has demolished.
-# This = Planet
-# From = Tile
-on_building_demolished = {
-	events = {
-		folksdahq.2
-	}
-}
-
 # A fleet has entered a system
 # Scope = Fleet
 # From = System

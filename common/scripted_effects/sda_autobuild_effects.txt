@@ -1,0 +1,23 @@
+
+
+# scope is planet
+sda_autobuild = {
+	if = {
+		limit = {
+			NOT = {
+				has_building = building_sdaoffice
+			}
+			# This trigger prevents habitat as well
+			autobuild_trigger_local_autoupdate = yes
+			# But it checks for shelters, etc, so we need to verify
+			# that there is an actual capital building 1, 2, or 3.
+			# This trigger checks those + alphamod replacements
+			autobuild_trigger_has_any_capital = yes
+		}
+		#owner = {
+			#every_owned_fleet = {
+				#set_fleet_flag = sda_test_autobuild
+			#}
+		#}
+	}
+}
