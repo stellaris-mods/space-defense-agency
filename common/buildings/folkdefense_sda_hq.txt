@@ -30,11 +30,16 @@ building_sdahq = {
 					has_building = "building_capital_1"
 					has_building = "building_capital_2"
 					has_building = "building_capital_3"
+					AND = {
+						has_global_flag = gf_alphamod_activated
+						alphamod_trigger_autobuild_has_any_capital = yes
+					}
 				}
 			}
 		}
 	}
 
+	# XXX Should re-weight now that vanilla values in 1.8.0 are more sane
 	ai_weight = {
 		weight = 9500
 	}
@@ -73,6 +78,10 @@ building_sdaoffice = {
 					has_building = "building_capital_1"
 					has_building = "building_capital_2"
 					has_building = "building_capital_3"
+					AND = {
+						has_global_flag = gf_alphamod_activated
+						alphamod_trigger_autobuild_has_any_capital = yes
+					}
 				}
 			}
 		}
@@ -93,6 +102,7 @@ building_sdaoffice = {
 		}
 	}
 
+	# XXX Should re-weight now that vanilla values in 1.8.0 are more sane
 	ai_weight = {
 		weight = 9000
 		modifier = {
