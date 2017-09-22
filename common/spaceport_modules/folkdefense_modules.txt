@@ -72,11 +72,7 @@ folksda_platform_module = {
 	}
 	ai_weight = {
 		weight = 1000
-		modifier = {
-			factor = 0
-			from = { has_planet_flag = "sda_no_office" }
-		}
-		modifier = {
+		modifier = { # I'm not sure this flag is used since 1.8
 			factor = 2
 			has_country_flag = ai_flag_aggressive_personality
 		}
