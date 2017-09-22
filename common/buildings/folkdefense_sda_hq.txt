@@ -127,7 +127,9 @@ building_sdaoffice = {
 		}
 		modifier = {
 			weight = 10
-			has_building = building_sdahq
+			from = {
+				has_building = building_sdahq
+			}
 		}
 	}
 }
