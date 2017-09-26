@@ -7,7 +7,7 @@ fleet_event = {
 
 	trigger = {
 		exists = owner
-		exists = from
+		exists = FROM
 		NOT = { has_fleet_flag = "folksdahq_ignorefleet" }
 		is_ship_class = shipclass_military
 		FROM = {
@@ -46,7 +46,7 @@ fleet_event = {
 					}
 				}
 				owner = { # Fleet owner
-					is_hostile = from.space_owner
+					is_hostile = FROM.space_owner
 				}
 			}
 			# Or the SDA owner is occupying a planet in this system, and
@@ -64,10 +64,10 @@ fleet_event = {
 							# Only if we actually declared war on someone,
 							# not just if we are occupying some random planet in another context
 							is_at_war = yes
-							is_hostile = from.space_owner
+							is_hostile = FROM.space_owner
 							# Entering fleets owner is hostile to the controller of the planet
-							root.owner = {
-								is_hostile = prev
+							ROOT.owner = {
+								is_hostile = PREV
 							}
 						}
 					}
@@ -82,7 +82,7 @@ fleet_event = {
 			flag = "folksdahq_ignorefleet"
 			days = 270
 		}
-		from = {
+		FROM = {
 			set_timed_star_flag = {
 				flag = "folksda_ignore_system"
 				days = 270
@@ -93,7 +93,7 @@ fleet_event = {
 				# If the owner of this fleet is hostile to the space_owner,
 				# that means the space owner is spawning the wormholes
 				owner = {
-					is_hostile = from.space_owner
+					is_hostile = FROM.space_owner
 				}
 			}
 			space_owner = {
@@ -192,11 +192,9 @@ country_event = {
 				set_aggro_range = 1000
 
 				#set_event_locked = yes
-				# XXX unused yet
-				set_fleet_flag = "folksda_platform_invis"
 				# another station buff, jeez
 				set_fleet_flag = "jeezbuffedalready"
-				set_owner = root
+				set_owner = ROOT
 				create_ship = {
 					name = "Space Defense Agency"
 					design = "SDA Wormhole"
@@ -252,10 +250,6 @@ country_event = {
 					name = "Space Defense Agency"
 					design = "SDA Wormholes"
 					prefix = no
-					effect = {
-						# XXX Unused
-						set_ship_flag = "folksda_platform_invis_extra"
-					}
 				}
 			}
 			change_variable = {
@@ -355,7 +349,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		from = {
+		FROM = {
 			has_building = building_sdaoffice
 		}
 	}

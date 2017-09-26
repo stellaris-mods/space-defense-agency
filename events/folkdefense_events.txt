@@ -120,8 +120,9 @@ planet_event = {
 					}
 				}
 			}
+			# XXX Test whether we need this. 1.8 might have fixed some modifiers... Probably not :-P
 			last_created_fleet = {
-				add_modifier = { # XXX Probably not needed
+				add_modifier = {
 					modifier = "sda_freeoffice"
 					days = -1
 				}
