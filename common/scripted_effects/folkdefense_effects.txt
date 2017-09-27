@@ -2,46 +2,30 @@
 # country scope
 fd_ensure_office_count = {
 	set_variable = {
-		which = "temp_counter"
+		which = "SDAPlanetaryOfficeCount"
 		value = 0
 	}
 	every_owned_planet = {
-		limit = { controller = { is_same_value = PREVPREV } }
+		limit = {
+			controller = { is_same_value = PREVPREV }
+			has_building = "building_sdaoffice"
+		}
 		set_planet_flag = "folk_not_counted"
 	}
 	while = {
-		limit = {
-			any_owned_planet {
-				has_planet_flag = "folk_not_counted"
-			}
-		}
-		# XXX check that we also actually control the planet
+		limit = { any_owned_planet { has_planet_flag = "folk_not_counted" } }
 		random_owned_planet = {
-			limit = {
-				has_planet_flag = "folk_not_counted"
-			}
-			if = {
-				limit = {
-					any_tile = {
-						has_building = building_sdaoffice
-					}
-				}
-				prev = {
-					change_variable = {
-						which = "temp_counter"
-						value = 1 # +1
-					}
+			limit = { has_planet_flag = "folk_not_counted" }
+			PREV = {
+				change_variable = {
+					which = "SDAPlanetaryOfficeCount"
+					value = 1 # +1
 				}
 			}
 			# Make sure we dont loop forever
 			remove_planet_flag = "folk_not_counted"
 			# And then we loop with while{}
 		}
-	}
-	# Not sure why I used a temp_counter variable. Probably for teh lulz.
-	set_variable = {
-		which = "SDAPlanetaryOfficeCount"
-		value = "temp_counter"
 	}
 }
 
