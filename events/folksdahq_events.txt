@@ -22,7 +22,7 @@ fleet_event = {
 				FROM = {
 					space_owner = {
 						capital_scope = {
-							has_building = building_sdahq
+							has_building = "building_sdahq"
 						}
 					}
 					OR = {
@@ -31,8 +31,8 @@ fleet_event = {
 							# Doesn't matter if the planet isnt owned by the space_owner
 							# The SDA will defend it if any planet in the system has a office
 							OR = {
-								has_building = building_sdaoffice
-								has_building = building_sdahq
+								has_building = "building_sdaoffice"
+								has_building = "building_sdahq"
 								AND = {
 									has_spaceport = yes
 									has_spaceport_module = folksda_platform_module
@@ -59,7 +59,7 @@ fleet_event = {
 						exists = controller
 						controller = {
 							capital_scope = {
-								has_building = building_sdahq
+								has_building = "building_sdahq"
 							}
 							# Only if we actually declared war on someone,
 							# not just if we are occupying some random planet in another context
@@ -118,7 +118,7 @@ fleet_event = {
 							exists = controller
 							controller = {
 								capital_scope = {
-									has_building = building_sdahq
+									has_building = "building_sdahq"
 								}
 							}
 						}
@@ -350,7 +350,7 @@ planet_event = {
 
 	trigger = {
 		FROM = {
-			has_building = building_sdaoffice
+			has_building = "building_sdaoffice"
 		}
 	}
 

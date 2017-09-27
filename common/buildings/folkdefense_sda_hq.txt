@@ -108,7 +108,7 @@ building_sdaoffice = {
 			}
 			fromfrom = {
 				capital_scope = {
-					has_building = building_sdahq
+					has_building = "building_sdahq"
 				}
 			}
 		}
@@ -128,7 +128,7 @@ building_sdaoffice = {
 		modifier = {
 			weight = 10
 			from = {
-				has_building = building_sdahq
+				has_building = "building_sdahq"
 			}
 		}
 	}
