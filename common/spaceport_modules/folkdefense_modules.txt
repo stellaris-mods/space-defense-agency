@@ -18,11 +18,11 @@ folksda_hangar_module = {
 		weight = 800
 		modifier = {
 			factor = 0
-			from = { has_planet_flag = "sda_no_hangar" }
+			FROM = { has_planet_flag = "sda_no_hangar" }
 		}
 		modifier = {
 			factor = 2
-			has_country_flag = ai_flag_aggressive_personality
+			has_country_flag = "ai_flag_aggressive_personality"
 		}
 		modifier = {
 			factor = 1.6
@@ -71,7 +71,7 @@ folksda_platform_module = {
 		weight = 1000
 		modifier = { # I'm not sure this flag is used since 1.8
 			factor = 2
-			has_country_flag = ai_flag_aggressive_personality
+			has_country_flag = "ai_flag_aggressive_personality"
 		}
 		modifier = {
 			factor = 1.6
@@ -119,11 +119,11 @@ folksda_snare_module = {
 		weight = 400
 		modifier = {
 			factor = 0
-			from = { has_planet_flag = "sda_no_snare" }
+			FROM = { has_planet_flag = "sda_no_snare" }
 		}
 		modifier = {
 			factor = 2
-			has_country_flag = ai_flag_aggressive_personality
+			has_country_flag = "ai_flag_aggressive_personality"
 		}
 	}
 }
@@ -157,7 +157,7 @@ folksda_debuff_module = {
 		weight = 5
 		modifier = {
 			factor = 2
-			has_country_flag = ai_flag_aggressive_personality
+			has_country_flag = "ai_flag_aggressive_personality"
 		}
 	}
 }

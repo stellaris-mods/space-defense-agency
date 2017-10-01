@@ -318,16 +318,16 @@ country_event = {
 						exists = event_target:folksda_targetfleet
 						event_target:folksda_targetfleet = {
 							exists = solar_system
-							solar_system = { is_same_value = prevprev.solar_system }
+							solar_system = { is_same_value = PREVPREV.solar_system }
 							exists = owner
-							owner = { is_hostile = prevprev.owner }
+							owner = { is_hostile = PREVPREV.owner }
 						}
 					}
 					wait = 7
 				}
 				effect = {
 					id = "folksdahq_deletewormhole.1"
-					destroy_fleet = this
+					destroy_fleet = THIS
 				}
 			}
 		}

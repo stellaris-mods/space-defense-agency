@@ -29,7 +29,7 @@ fd_ensure_office_count = {
 	}
 }
 
-# root/this is the country scope
+# ROOT/THIS is the country scope
 fd_get_wormhole_hp = {
 	random_owned_ship = {
 		limit = {
@@ -38,36 +38,36 @@ fd_get_wormhole_hp = {
 		}
 		switch = {
 			trigger = has_hp
-			2390 > { root = { set_variable = { which = SDABaseWormholeHP value = 2400 } } } #100%
-			2270 > { root = { set_variable = { which = SDABaseWormholeHP value = 2280 } } } #90%
-			2150 > { root = { set_variable = { which = SDABaseWormholeHP value = 2160 } } } #80%
-			2030 > { root = { set_variable = { which = SDABaseWormholeHP value = 2040 } } } #70%
-			1910 > { root = { set_variable = { which = SDABaseWormholeHP value = 1920 } } } #60%
-			1790 > { root = { set_variable = { which = SDABaseWormholeHP value = 1800 } } } #50%
-			1670 > { root = { set_variable = { which = SDABaseWormholeHP value = 1680 } } } #40%
-			1550 > { root = { set_variable = { which = SDABaseWormholeHP value = 1560 } } } #30%
-			1430 > { root = { set_variable = { which = SDABaseWormholeHP value = 1440 } } } #20%
-			1310 > { root = { set_variable = { which = SDABaseWormholeHP value = 1320 } } } #10%
+			2390 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 2400 } } } #100%
+			2270 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 2280 } } } #90%
+			2150 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 2160 } } } #80%
+			2030 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 2040 } } } #70%
+			1910 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1920 } } } #60%
+			1790 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1800 } } } #50%
+			1670 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1680 } } } #40%
+			1550 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1560 } } } #30%
+			1430 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1440 } } } #20%
+			1310 > { ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1320 } } } #10%
 			default = {
-				root = { set_variable = { which = SDABaseWormholeHP value = 1200 } }
+				ROOT = { set_variable = { which = "SDABaseWormholeHP" value = 1200 } }
 			}
 		}
 	}
 }
 
-# prev is the hostile fleet
-# this is the owner of the incoming wormholes
+# PREV is the hostile fleet
+# THIS is the owner of the incoming wormholes
 fd_count_hitpoints = {
 	# First we need to save a reference to the fleet
 	# = folksda_targetfleet
 	set_variable = {
-		which = SDAFleetHP
+		which = "SDAFleetHP"
 		value = 0
 	}
 	# Then we need to save the owner
 	# actually we dont any more because I changed how it works, but
 	# I dont want to re-analyze the scopes here
-	prev = { owner = { save_event_target_as = fd_count_owner } }
+	PREV = { owner = { save_event_target_as = fd_count_owner } }
 	# Then we scope to the owner, check every_owned_ship that is
 	# in the same fleet
 	event_target:fd_count_owner = {
@@ -77,22 +77,22 @@ fd_count_hitpoints = {
 			}
 			switch = {
 				trigger = has_hp
-				9999 > { prevprev = { change_variable = { which = SDAFleetHP value = 10000 } } }
-				8999 > { prevprev = { change_variable = { which = SDAFleetHP value = 9000 } } }
-				7999 > { prevprev = { change_variable = { which = SDAFleetHP value = 8000 } } }
-				6999 > { prevprev = { change_variable = { which = SDAFleetHP value = 7000 } } }
-				5999 > { prevprev = { change_variable = { which = SDAFleetHP value = 6000 } } }
-				4999 > { prevprev = { change_variable = { which = SDAFleetHP value = 5000 } } }
-				3999 > { prevprev = { change_variable = { which = SDAFleetHP value = 4000 } } }
-				2999 > { prevprev = { change_variable = { which = SDAFleetHP value = 3000 } } }
-				1999 > { prevprev = { change_variable = { which = SDAFleetHP value = 2000 } } }
-				999  > { prevprev = { change_variable = { which = SDAFleetHP value = 1000 } } }
-				799  > { prevprev = { change_variable = { which = SDAFleetHP value = 800 } } }
-				599  > { prevprev = { change_variable = { which = SDAFleetHP value = 600 } } }
-				399  > { prevprev = { change_variable = { which = SDAFleetHP value = 400 } } }
-				199  > { prevprev = { change_variable = { which = SDAFleetHP value = 200 } } }
+				9999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 10000 } } }
+				8999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 9000 } } }
+				7999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 8000 } } }
+				6999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 7000 } } }
+				5999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 6000 } } }
+				4999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 5000 } } }
+				3999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 4000 } } }
+				2999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 3000 } } }
+				1999 > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 2000 } } }
+				999  > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 1000 } } }
+				799  > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 800 } } }
+				599  > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 600 } } }
+				399  > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 400 } } }
+				199  > { PREVPREV = { change_variable = { which = "SDAFleetHP" value = 200 } } }
 				default = {
-					prevprev = { change_variable = { which = SDAFleetHP value = 100 } }
+					PREVPREV = { change_variable = { which = "SDAFleetHP" value = 100 } }
 				}
 			}
 		}
@@ -170,7 +170,7 @@ fd_updated_aura_station = {
 			}
 		}
 	}
-	remove_planet_flag = sda_keep_station
+	remove_planet_flag = "sda_keep_station"
 
 	owner = {
 		if = {
@@ -178,64 +178,64 @@ fd_updated_aura_station = {
 				any_owned_fleet = {
 					is_ship_size = folksda_aura_station
 					exists = orbit
-					orbit = { is_same_value = prevprevprev }
+					orbit = { is_same_value = PREVPREVPREV }
 				}
 			}
 			random_owned_fleet = {
 				limit = {
 					is_ship_size = folksda_aura_station
 					exists = orbit
-					orbit = { is_same_value = prevprevprev }
+					orbit = { is_same_value = PREVPREVPREV }
 				}
 				switch = {
 					trigger = has_fleet_flag
 					sda_aura_type_1 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_1 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_1" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_2 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_2 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_2" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_3 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_3 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_3" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_4 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_4 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_4" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_5 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_5 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_5" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_6 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_6 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_6" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 					sda_aura_type_7 = {
 						if = {
-							limit = { NOT = { prevprev = { has_planet_flag = sda_aura_type_7 } } }
-							delete_fleet = this
-							else = { prevprev = { set_planet_flag = sda_keep_station } }
+							limit = { NOT = { PREVPREV = { has_planet_flag = "sda_aura_type_7" } } }
+							delete_fleet = THIS
+							else = { PREVPREV = { set_planet_flag = "sda_keep_station" } }
 						}
 					}
 				}
@@ -244,7 +244,7 @@ fd_updated_aura_station = {
 	}
 
 	if = {
-		limit = { NOT = { has_planet_flag = sda_keep_station } }
+		limit = { NOT = { has_planet_flag = "sda_keep_station" } }
 		switch = {
 			trigger = has_planet_flag
 			sda_aura_type_1 = {
@@ -252,14 +252,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_1"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator H-741"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -268,14 +268,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_2"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator U-F0E"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -284,14 +284,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_3"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator F-103"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -300,14 +300,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_4"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator F2-105"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -316,14 +316,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_5"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator U2-F0F"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -332,14 +332,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_6"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator F2-104"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}
@@ -348,14 +348,14 @@ fd_updated_aura_station = {
 					name = "Spaceport Extension"
 					settings = { spawn_debris = no }
 					effect = {
-						set_owner = prev.owner
+						set_owner = PREV.owner
 						set_fleet_flag = "sda_aura_type_7"
 						create_ship = {
 							name = ""
 							prefix = no
 							design = "Field Modulator X3-F27"
 						}
-						set_location = prev
+						set_location = PREV
 					}
 				}
 			}

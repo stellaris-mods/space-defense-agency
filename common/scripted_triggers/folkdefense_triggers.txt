@@ -1,11 +1,11 @@
 
 # Fortress
-# root is the planet, scope is country
+# ROOT is the planet, scope is country
 fd_canbuild_level_3 = {
 	exists = event_target:folksda_oldplatform
 	has_technology = "tech_space_defense_station_3"
 	fd_atleast_three_offices = yes
-	root = {
+	ROOT = {
 		check_variable = {
 			which = SDAStationAge
 			value > 71
@@ -14,12 +14,12 @@ fd_canbuild_level_3 = {
 }
 
 # Defense Station
-# root is the planet, scope is country
+# ROOT is the planet, scope is country
 fd_canbuild_level_2 = {
 	exists = event_target:folksda_oldplatform
 	fd_atleast_two_offices = yes
 	has_technology = "tech_space_defense_station_2"
-	root = {
+	ROOT = {
 		check_variable = {
 			which = SDAStationAge
 			value > 35
@@ -62,7 +62,7 @@ fd_atleast_four_offices = {
 }
 
 # Battle Fortress
-# root is the planet, scope is country
+# ROOT is the planet, scope is country
 fd_canbuild_level_4 = {
 	OR = {
 		has_country_flag = "has_nsc_v3"
@@ -77,7 +77,7 @@ fd_canbuild_level_4 = {
 	fd_atleast_four_offices = yes
 	exists = event_target:folksda_oldplatform
 	has_technology = "tech_space_defense_station_3"
-	root = {
+	ROOT = {
 		check_variable = {
 			which = SDAStationAge
 			value > 107
