@@ -26,32 +26,29 @@ folksda_hangar_module = {
 		}
 		modifier = {
 			factor = 1.6
-			OR = {
-				is_at_war = yes
-				is_war_leader = yes
-			}
+			is_at_war = yes
 		}
 		modifier = {
 			factor = 1.4
 			any_neighbor_country = {
-				is_country_type = default
+				is_country_type = "default"
 				OR = {
-					is_hostile_to = prev
-					is_domineering_to = prev
+					is_hostile_to = PREV
+					is_domineering_to = PREV
 				}
 			}
 		}
 		modifier = {
 			factor = 0.5
-			any_owned_leader = {
-				leader_of_faction = yes
+			exists = ruler
+			ruler = {
 				has_mandate = "mandate_orbital_researcher"
 			}
 		}
 		modifier = {
 			factor = 0.2
-			any_owned_leader = {
-				leader_of_faction = yes
+			exists = ruler
+			ruler = {
 				has_mandate = "mandate_peacemaker"
 			}
 		}
@@ -78,32 +75,29 @@ folksda_platform_module = {
 		}
 		modifier = {
 			factor = 1.6
-			OR = {
-				is_at_war = yes
-				is_war_leader = yes
-			}
+			is_at_war = yes
 		}
 		modifier = {
 			factor = 1.4
 			any_neighbor_country = {
-				is_country_type = default
+				is_country_type = "default"
 				OR = {
-					is_hostile_to = prev
-					is_domineering_to = prev
+					is_hostile_to = PREV
+					is_domineering_to = PREV
 				}
 			}
 		}
 		modifier = {
 			factor = 0.5
-			any_owned_leader = {
-				leader_of_faction = yes
+			exists = ruler
+			ruler = {
 				has_mandate = "mandate_orbital_researcher"
 			}
 		}
 		modifier = {
 			factor = 0.2
-			any_owned_leader = {
-				leader_of_faction = yes
+			exists = ruler
+			ruler = {
 				has_mandate = "mandate_peacemaker"
 			}
 		}
