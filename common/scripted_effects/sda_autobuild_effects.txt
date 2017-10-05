@@ -5,6 +5,7 @@ sda_autobuild = {
 		limit = {
 			free_building_tiles > 0
 			num_pops > 3
+			exists = owner
 			OR = {
 				AND = {
 					NOT = { has_building = "building_sdaoffice" }
