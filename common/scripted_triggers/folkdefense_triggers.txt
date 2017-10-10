@@ -64,15 +64,13 @@ fd_atleast_four_offices = {
 # Battle Fortress
 # ROOT is the planet, scope is country
 fd_canbuild_level_4 = {
+	has_global_flag = "has_nsc_active"
 	OR = {
-		has_country_flag = "has_nsc_v3"
-		OR = {
-			any_owned_planet = {
-				has_building = "building_governors_mansion"
-			}
-			# Apparently the AI never builds the mansion
-			is_ai = yes
+		any_owned_planet = {
+			has_building = "building_governors_mansion"
 		}
+		# Apparently the AI never builds the mansion
+		is_ai = yes
 	}
 	fd_atleast_four_offices = yes
 	exists = event_target:folksda_oldplatform
