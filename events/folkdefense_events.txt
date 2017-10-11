@@ -1,128 +1,16 @@
 namespace = folkdefense
 
-planet_event = {
-	id = "folkdefense.1"
+country_event = {
+	id = folkdefense.1
 	hide_window = yes
-
-	trigger = {
-		exists = owner
-		has_spaceport = yes
-		is_occupied_flag = no
-		has_ground_combat = no
-		has_spaceport_module = "folksda_platform_module"
-		solar_system = {
-			exists = space_owner
-			space_owner = { is_country = ROOT.owner }
-		}
-		NOT = {
-			solar_system = {
-				any_ship_in_system = {
-					exists = owner
-					owner = { is_hostile = ROOT.owner }
-				}
-			}
-		}
-	}
-	mean_time_to_happen = {
-		months = 6
-	}
+	trigger = { any_owned_planet = { sda_valid_station_planet = yes } }
+	mean_time_to_happen = { months = 6 }
 	immediate = {
-		# We do this every 6 months even if it exists, because
-		# the player might have upgraded the station
-		solar_system = {
-			random_fleet_in_system = {
-				limit = {
-					exists = owner
-					owner = { is_same_value = ROOT.owner }
-					has_fleet_flag = "folksda_platform"
-					distance = {
-						source = ROOT
-						max_distance = 41
-						min_distance = 38
-					}
-				}
-				save_event_target_as = folksda_oldplatform
-			}
+		every_owned_planet = {
+			limit = { sda_valid_station_planet = yes }
+			sda_check_planet = yes
 		}
-		owner = {
-			# Count all offices
-			fd_ensure_office_count = yes
-
-			create_fleet = {
-				effect = {
-					set_name = "Space Defense Agency"
-					set_fleet_flag = "folksda_platform"
-					set_owner = ROOT.owner
-				}
-			}
-			if = { limit = { fd_canbuild_level_4 = yes }
-				# Create battle fortress
-				last_created_fleet = {
-					nsc_create_battle_fortress = yes
-					random_owned_ship = {
-						set_name = ""
-						set_ship_flag = "folksda_platform"
-					}
-				}
-			else = { if = { limit = { fd_canbuild_level_3 = yes }
-				# Create fortress
-				last_created_fleet = {
-					create_ship = {
-						name = ""
-						random_existing_design = "military_station_large"
-						effect = { set_ship_flag = "folksda_platform" }
-					}
-				}
-			else = { if = { limit = { fd_canbuild_level_2 = yes }
-				# Create station
-				last_created_fleet = {
-					create_ship = {
-						name = ""
-						random_existing_design = military_station_medium
-						effect = { set_ship_flag = "folksda_platform" }
-					}
-				}
-			else = {
-				# Create platform
-				last_created_fleet = {
-					create_ship = {
-						name = ""
-						random_existing_design = "military_station_small"
-						effect = { set_ship_flag = "folksda_platform" }
-					}
-				}
-			} } } } } }
-
-			last_created_fleet = {
-				add_modifier = {
-					modifier = "sda_freeoffice"
-					days = -1
-				}
-			}
-
-			if = {
-				limit = { exists = event_target:folksda_oldplatform }
-				last_created_fleet = {
-					set_location = event_target:folksda_oldplatform
-				}
-				event_target:folksda_oldplatform = { delete_fleet = THIS }
-				else = {
-					ROOT = {
-						set_variable = {
-							which = SDAStationAge
-							value = 0
-						}
-					}
-					last_created_fleet = {
-						set_location = {
-							target = ROOT
-							distance = 40
-							angle = random
-						}
-					}
-				}
-			}
-		}
+		remove_country_flag = "sda_upgrade_stations"
 	}
 }
 
@@ -158,7 +46,7 @@ event = {
 					# that doesnt actually have a station due to
 					# other factors, I dont care
 					change_variable = {
-						which = SDAStationAge
+						which = "SDAStationAge"
 						value = 1
 					}
 				}
@@ -188,4 +76,27 @@ planet_event = {
 			60 = { }
 		}
 	}
+}
+
+ship_event = {
+	id = folkdefense.300
+	title = "sda_will_upgrade.title"
+	desc = "sda_will_upgrade.desc"
+	picture = "GFX_evt_throne_room"
+	is_triggered_only = yes
+
+	trigger = {
+		has_ship_flag = "folksda_platform"
+		NOT = { owner = { has_country_flag = "sda_upgrade_stations" } }
+		owner = {
+			any_owned_ship = {
+				has_ship_flag = "folksda_platform"
+				NOT = { is_same_value = ROOT }
+			}
+		}
+	}
+	immediate = {
+		owner = { set_country_flag = "sda_upgrade_stations" }
+	}
+	option = { name = EXCELLENT }
 }

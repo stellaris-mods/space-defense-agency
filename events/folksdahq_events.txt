@@ -97,8 +97,6 @@ fleet_event = {
 				}
 			}
 			space_owner = {
-				fd_ensure_office_count = yes
-
 				# Calculate the hostile fleets total hitpoints, roughly
 				fd_count_hitpoints = yes
 
@@ -123,8 +121,6 @@ fleet_event = {
 							}
 						}
 						controller = {
-							fd_ensure_office_count = yes
-
 							# Calculate the hostile fleets total hitpoints, roughly
 							fd_count_hitpoints = yes
 
@@ -157,26 +153,6 @@ country_event = {
 	}
 
 	immediate = {
-		# Transfer office count to temp_counter
-		set_variable = {
-			which = "temp_counter"
-			value = "SDAPlanetaryOfficeCount"
-		}
-
-		# Limit the number of SDA
-		if = {
-			limit = {
-				check_variable = {
-					which = "temp_counter"
-					value > 4
-				}
-			}
-			set_variable = {
-				which = "temp_counter"
-				value = 5
-			}
-		}
-
 		create_fleet = {
 			settings = {
 				spawn_debris = no
@@ -211,10 +187,17 @@ country_event = {
 		# The hulls HP in ship_sizes is 1200
 		fd_get_wormhole_hp = yes
 
+		# Transfer office count to SDAOfficeCount
+		set_variable = { which = "SDAOfficeCount" value = 0 }
+		every_owned_pop = {
+			limit = { exists = tile tile = { has_building = building_sdaoffice } }
+			PREV = { change_variable = { which = "SDAOfficeCount" value = 1 } }
+		}
+
 		# ====== STEP 1: Calculate number of wormholes we are spawning
 		# Calculate the actual number of wormholes we are going to open
 		# based on number of SDA office buildings
-		set_variable = { which = "SDAActualCount" value = "temp_counter" }
+		set_variable = { which = "SDAActualCount" value = "SDAOfficeCount" }
 		# +1 for the base wormhole
 		change_variable = { which = "SDAActualCount" value = 1 }
 
@@ -241,7 +224,7 @@ country_event = {
 		while = {
 			limit = {
 				check_variable = {
-					which = "temp_counter"
+					which = "SDAOfficeCount"
 					value > 0
 				}
 			}
@@ -253,7 +236,7 @@ country_event = {
 				}
 			}
 			change_variable = {
-				which = "temp_counter"
+				which = "SDAOfficeCount"
 				value = -1
 			}
 		}
@@ -326,33 +309,6 @@ country_event = {
 					destroy_fleet = THIS
 				}
 			}
-		}
-	}
-}
-
-# We should, to be 100% certain, check for
-# buildings that are queued, planets that are lost/transferred/ownerless
-# and so forth.
-# But the fact is, if the count is wrong for some period of time, it is
-# not really that much of a problem.
-
-#A building construction has been completed.
-# This = Planet
-# From = Tile
-planet_event = {
-	id = folksdahq.1
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		FROM = {
-			has_building = "building_sdaoffice"
-		}
-	}
-
-	immediate = {
-		owner = {
-			fd_ensure_office_count = yes
 		}
 	}
 }

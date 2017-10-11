@@ -10,20 +10,17 @@ on_colonized = {
 	}
 }
 
-#A building construction has been completed.
-# This = Planet
-# From = Tile
-on_building_complete = {
-	events = {
-		folksdahq.1
-	}
-}
-
 # A fleet has entered a system
 # Scope = Fleet
 # From = System
 on_entering_system_fleet = {
 	events = {
 		folksdahq.100
+	}
+}
+
+on_ship_upgraded = {
+	events = {
+		folkdefense.300
 	}
 }

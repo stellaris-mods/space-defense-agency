@@ -6,6 +6,9 @@
 #l_polish:
 l_russian:
 
+sda_will_upgrade.title: "Space Defense Agency: Upgrades"
+sda_will_upgrade.desc: "The §MSpace Defense Agency§! has been informed that you ordered the empires engineer corps to upgrade one of our military installations. The agency will upgrade all other installations over the coming months, at no cost to you.\n\nOrdering a manual engineering upgrade of an agency installation in the future will produce the same result.\n\n§PAs a reminder on our policy, we do not conduct upgrades of our military installations to match your designs unless (a) the empires scientists and engineers produce a better overall hull type, or unless (b) you manually order your engineers to upgrade one of the agency installations.§!"
+
 shipsize_folk_invisible_station_upkeep_mult: "Содержание"
 folk_invisible_station_upkeep_mult: "Содержание"
 

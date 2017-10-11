@@ -1,34 +1,4 @@
 
-# country scope
-fd_ensure_office_count = {
-	set_variable = {
-		which = "SDAPlanetaryOfficeCount"
-		value = 0
-	}
-	every_owned_planet = {
-		limit = {
-			controller = { is_same_value = PREVPREV }
-			has_building = "building_sdaoffice"
-		}
-		set_planet_flag = "folk_not_counted"
-	}
-	while = {
-		limit = { any_owned_planet { has_planet_flag = "folk_not_counted" } }
-		random_owned_planet = {
-			limit = { has_planet_flag = "folk_not_counted" }
-			PREV = {
-				change_variable = {
-					which = "SDAPlanetaryOfficeCount"
-					value = 1 # +1
-				}
-			}
-			# Make sure we dont loop forever
-			remove_planet_flag = "folk_not_counted"
-			# And then we loop with while{}
-		}
-	}
-}
-
 # ROOT/THIS is the country scope
 fd_get_wormhole_hp = {
 	random_owned_ship = {
@@ -356,6 +326,98 @@ fd_updated_aura_station = {
 							design = "Field Modulator X3-F27"
 						}
 						set_location = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+# THIS is a planet with a module
+# ROOT/owner is the owner
+sda_check_planet = {
+	if = {
+		limit = {
+			OR = {
+				sda_spawned_station_exists = no
+				owner = { has_country_flag = "sda_upgrade_stations" }
+			}
+		}
+
+		# We need to create a new station, or update an existing one
+		create_fleet = {
+			effect = {
+				set_name = "Space Defense Agency"
+				set_fleet_flag = "folksda_platform"
+				set_owner = ROOT
+			}
+		}
+		if = { limit = { fd_canbuild_level_4 = yes }
+			# Create battle fortress
+			last_created_fleet = {
+				nsc_create_battle_fortress = yes
+				random_owned_ship = {
+					set_name = ""
+					set_ship_flag = "folksda_platform"
+				}
+			}
+		else = { if = { limit = { fd_canbuild_level_3 = yes }
+			# Create fortress
+			last_created_fleet = {
+				create_ship = {
+					name = ""
+					random_existing_design = "military_station_large"
+					effect = { set_ship_flag = "folksda_platform" }
+				}
+			}
+		else = { if = { limit = { fd_canbuild_level_2 = yes }
+			# Create station
+			last_created_fleet = {
+				create_ship = {
+					name = ""
+					random_existing_design = military_station_medium
+					effect = { set_ship_flag = "folksda_platform" }
+				}
+			}
+		else = {
+			# Create platform
+			last_created_fleet = {
+				create_ship = {
+					name = ""
+					random_existing_design = "military_station_small"
+					effect = { set_ship_flag = "folksda_platform" }
+				}
+			}
+		} } } } } }
+
+		last_created_fleet = {
+			add_modifier = {
+				modifier = "sda_freeoffice"
+				days = -1
+			}
+		}
+
+		if = {
+			limit = { sda_spawned_station_exists = yes }
+			log = "[this.GetName]: SDA spawning replacement station."
+			random_fleet_in_system = {
+				limit = { sda_is_spawned_station = yes }
+				last_created_fleet = {
+					set_location = PREV
+				}
+				delete_fleet = THIS
+			}
+			else = {
+				log = "[this.GetName]: SDA spawning new station."
+				set_variable = {
+					which = "SDAStationAge"
+					value = 0
+				}
+				last_created_fleet = {
+					set_location = {
+						target = PREV
+						distance = 40
+						angle = random
 					}
 				}
 			}

@@ -11,81 +11,72 @@ sda_valid_spaceport_module_planet = {
 	# ---
 }
 
+# Battle Fortress
+# THIS is the planet
+fd_canbuild_level_4 = {
+	has_global_flag = "has_nsc_active"
+	check_variable = {
+		which = "SDAStationAge"
+		value > 107
+	}
+	owner = {
+		has_technology = "tech_battle_fortress_1"
+		fd_atleast_four_offices = yes
+	}
+}
 
 # Fortress
-# ROOT is the planet, scope is country
+# THIS is the planet
 fd_canbuild_level_3 = {
-	exists = event_target:folksda_oldplatform
-	has_technology = "tech_space_defense_station_3"
-	fd_atleast_three_offices = yes
-	ROOT = {
-		check_variable = {
-			which = SDAStationAge
-			value > 71
-		}
+	check_variable = {
+		which = "SDAStationAge"
+		value > 71
+	}
+	owner = {
+		has_technology = "tech_space_defense_station_3"
+		fd_atleast_three_offices = yes
 	}
 }
 
 # Defense Station
-# ROOT is the planet, scope is country
+# THIS is the planet
 fd_canbuild_level_2 = {
-	exists = event_target:folksda_oldplatform
-	has_technology = "tech_space_defense_station_2"
-	fd_atleast_two_offices = yes
-	ROOT = {
-		check_variable = {
-			which = SDAStationAge
-			value > 35
-		}
+	check_variable = {
+		which = "SDAStationAge"
+		value > 35
+	}
+	owner = {
+		has_technology = "tech_space_defense_station_2"
+		fd_atleast_two_offices = yes
 	}
 }
 
 fd_canbuild_level_1 = {
-	fd_atleast_one_office = yes
+	owner = { fd_atleast_one_office = yes }
 }
 
-
-# Country scope
 fd_atleast_one_office = {
-	check_variable = {
-		which = SDAPlanetaryOfficeCount
-		value > 0
+	count_owned_pops = {
+		limit = { exists = tile tile = { has_building = building_sdaoffice } }
+		count > 0
 	}
 }
-# Country scope
 fd_atleast_two_offices = {
-	check_variable = {
-		which = SDAPlanetaryOfficeCount
-		value > 1
+	count_owned_pops = {
+		limit = { exists = tile tile = { has_building = building_sdaoffice } }
+		count > 1
 	}
 }
-# Country scope
 fd_atleast_three_offices = {
-	check_variable = {
-		which = SDAPlanetaryOfficeCount
-		value > 2
+	count_owned_pops = {
+		limit = { exists = tile tile = { has_building = building_sdaoffice } }
+		count > 2
 	}
 }
-# Country scope
 fd_atleast_four_offices = {
-	check_variable = {
-		which = SDAPlanetaryOfficeCount
-		value > 3
-	}
-}
-
-# Battle Fortress
-# ROOT is the planet, scope is country
-fd_canbuild_level_4 = {
-	has_global_flag = "has_nsc_active"
-	has_technology = "tech_battle_fortress_1"
-	fd_atleast_four_offices = yes
-	exists = event_target:folksda_oldplatform
-	ROOT = {
-		check_variable = {
-			which = SDAStationAge
-			value > 107
-		}
+	count_owned_pops = {
+		limit = { exists = tile tile = { has_building = building_sdaoffice } }
+		count > 3
 	}
 }
 
@@ -102,6 +93,52 @@ sda_build_tile_subpar = {
 	has_building_construction = no
 }
 
+sda_valid_station_planet = {
+	has_spaceport = yes
+	is_occupied_flag = no
+	has_ground_combat = no
+	has_spaceport_module = "folksda_platform_module"
+	solar_system = {
+		exists = space_owner
+		space_owner = { is_country = ROOT }
+	}
+	NOT = {
+		solar_system = {
+			any_ship_in_system = {
+				exists = owner
+				owner = { is_hostile = ROOT }
+			}
+		}
+	}
+}
+
+# ROOT is the country
+# PREV is the planet
+sda_is_spawned_station = {
+	exists = owner
+	owner = { is_same_value = ROOT }
+	has_fleet_flag = "folksda_platform"
+	distance = {
+		source = PREV
+		max_distance = 41
+		min_distance = 38
+	}
+}
+
+sda_spawned_station_exists = {
+	solar_system = {
+		any_ship_in_system = {
+			exists = owner
+			owner = { is_same_value = ROOT }
+			has_ship_flag = "folksda_platform"
+			distance = {
+				source = PREVPREV
+				max_distance = 41
+				min_distance = 38
+			}
+		}
+	}
+}
 
 
 ###############################################################################
