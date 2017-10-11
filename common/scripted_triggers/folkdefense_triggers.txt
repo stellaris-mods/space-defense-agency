@@ -30,8 +30,8 @@ fd_canbuild_level_3 = {
 # ROOT is the planet, scope is country
 fd_canbuild_level_2 = {
 	exists = event_target:folksda_oldplatform
-	fd_atleast_two_offices = yes
 	has_technology = "tech_space_defense_station_2"
+	fd_atleast_two_offices = yes
 	ROOT = {
 		check_variable = {
 			which = SDAStationAge
@@ -78,16 +78,9 @@ fd_atleast_four_offices = {
 # ROOT is the planet, scope is country
 fd_canbuild_level_4 = {
 	has_global_flag = "has_nsc_active"
-	OR = {
-		any_owned_planet = {
-			has_building = "building_governors_mansion"
-		}
-		# Apparently the AI never builds the mansion
-		is_ai = yes
-	}
+	has_technology = "tech_battle_fortress_1"
 	fd_atleast_four_offices = yes
 	exists = event_target:folksda_oldplatform
-	has_technology = "tech_space_defense_station_3"
 	ROOT = {
 		check_variable = {
 			which = SDAStationAge
@@ -108,3 +101,18 @@ sda_build_tile_subpar = {
 	has_building = no
 	has_building_construction = no
 }
+
+
+
+###############################################################################
+# NSC Fake Triggers
+# They are not fake until the next NSC release
+#
+
+nsc_is_battle_fortress = { is_ship_size = military_station_xlarge }
+# nsc_is_headquarters = { is_ship_size = Headquarters }
+# nsc_is_drydock = { is_ship_size = Drydock }
+# nsc_is_power_station = { is_ship_size = PowerStation }
+# nsc_is_mining_base = { is_ship_size = MiningBase }
+# nsc_is_sensor_station = { is_ship_size = SensorStation }
+
