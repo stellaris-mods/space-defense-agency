@@ -1,25 +1,10 @@
+
 sda_freeoffice = {
-	ship_upkeep_mult = -1
-	#shipsize_military_station_small_upkeep_mult = -1
-	#shipsize_military_station_medium_upkeep_mult = -1
-	#shipsize_military_station_large_upkeep_mult = -1
-	#shipsize_military_station_xlarge_upkeep_mult = -1
-}
-sda_freeoffice_small = {
-	shipsize_military_station_small_upkeep_mult = -10
-}
-sda_freeoffice_medium = {
-	shipsize_military_station_medium_upkeep_mult = -10
-}
-sda_freeoffice_large = {
-	shipsize_military_station_large_upkeep_mult = -10
-}
-sda_freeoffice_xlarge = {
-	shipsize_military_station_xlarge_upkeep_mult = -10
-}
-sda_freeoffice_portal = {
-	shipsize_folk_invisible_station_upkeep_mult = -10
-	#folk_invisible_station_upkeep_mult = -10
+	shipsize_folk_invisible_station_upkeep_mult = -1
+	shipsize_military_station_small_upkeep_mult = -1
+	shipsize_military_station_medium_upkeep_mult = -1
+	shipsize_military_station_large_upkeep_mult = -1
+	shipsize_military_station_xlarge_upkeep_mult = -1
 }
 
 sda_addhp = { ship_hitpoints_add = 500 }

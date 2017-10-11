@@ -302,10 +302,6 @@ country_event = {
 				modifier = "sda_freeoffice"
 				days = -1
 			}
-			add_modifier = {
-				modifier = "sda_freeoffice_portal"
-				days = -1
-			}
 			set_location = {
 				target = event_target:folksda_targetfleet
 				distance = 40
