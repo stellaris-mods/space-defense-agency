@@ -119,7 +119,7 @@ sda_is_spawned_station = {
 	owner = { is_same_value = ROOT }
 	has_fleet_flag = "folksda_platform"
 	distance = {
-		source = PREV
+		source = PREVPREV
 		max_distance = 41
 		min_distance = 38
 	}

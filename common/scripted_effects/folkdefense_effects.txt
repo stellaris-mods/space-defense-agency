@@ -400,12 +400,14 @@ sda_check_planet = {
 		if = {
 			limit = { sda_spawned_station_exists = yes }
 			log = "[this.GetName]: SDA spawning replacement station."
-			random_fleet_in_system = {
-				limit = { sda_is_spawned_station = yes }
-				last_created_fleet = {
-					set_location = PREV
+			solar_system = {
+				random_fleet_in_system = {
+					limit = { sda_is_spawned_station = yes }
+					last_created_fleet = {
+						set_location = PREVPREV
+					}
+					delete_fleet = THIS
 				}
-				delete_fleet = THIS
 			}
 			else = {
 				log = "[this.GetName]: SDA spawning new station."
