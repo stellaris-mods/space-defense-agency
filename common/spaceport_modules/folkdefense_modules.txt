@@ -59,7 +59,7 @@ folksda_platform_module = {
 	icon = "GFX_spaceport_defenseagency"
 	section = "DEFENSEAGENCY_PLATFORM_SECTION"
 	construction_days = 270
-	prerequisites = { tech_spaceport_5 tech_space_defense_station_1 }
+	prerequisites = { tech_spaceport_5 }
 	component_set = "SDASET_SHIELD"
 	spaceport_level = 1
 	cost = { minerals = 750 }
