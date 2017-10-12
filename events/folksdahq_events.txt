@@ -21,6 +21,7 @@ fleet_event = {
 			AND = {
 				FROM = {
 					space_owner = {
+						exists = capital_scope
 						capital_scope = {
 							has_building = "building_sdahq"
 						}
@@ -58,6 +59,7 @@ fleet_event = {
 						is_occupied_flag = yes
 						exists = controller
 						controller = {
+							exists = capital_scope
 							capital_scope = {
 								has_building = "building_sdahq"
 							}
@@ -115,6 +117,7 @@ fleet_event = {
 							is_occupied_flag = yes
 							exists = controller
 							controller = {
+								exists = capital_scope
 								capital_scope = {
 									has_building = "building_sdahq"
 								}
