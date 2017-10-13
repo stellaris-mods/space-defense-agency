@@ -6,6 +6,9 @@ country_event = {
 	trigger = { any_owned_planet = { sda_valid_station_planet = yes } }
 	mean_time_to_happen = { months = 6 }
 	immediate = {
+		if = { limit = { has_country_flag = "sda_upgrade_stations" }
+			log = "[this.GetName]: Upgrading all SDA stations."
+		}
 		every_owned_planet = {
 			limit = { sda_valid_station_planet = yes }
 			sda_check_planet = yes

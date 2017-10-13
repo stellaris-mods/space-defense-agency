@@ -130,7 +130,8 @@ sda_spawned_station_exists = {
 		any_ship_in_system = {
 			exists = owner
 			owner = { is_same_value = ROOT }
-			has_ship_flag = "folksda_platform"
+			exists = fleet
+			fleet = { has_fleet_flag = "folksda_platform" }
 			distance = {
 				source = PREVPREV
 				max_distance = 41
