@@ -106,16 +106,10 @@ building_sdaoffice = {
 	# FROM = planet
 	# FROMFROM = country
 	ai_allow = {
-		OR = {
-			NOT = {
-				FROMFROM = {
-					fd_atleast_four_offices = yes
-				}
-			}
+		# Disallow if we have 4 or more offices
+		NOT = {
 			FROMFROM = {
-				capital_scope = {
-					has_building = "building_sdahq"
-				}
+				fd_atleast_four_offices = yes
 			}
 		}
 	}
@@ -124,15 +118,18 @@ building_sdaoffice = {
 	ai_weight = {
 		weight = 30
 		modifier = {
-			weight = 5
+			factor = 0
 			FROM = {
 				owner = {
-					fd_atleast_four_offices = yes
+					exists = capital_scope
+					capital_scope = {
+						NOT = { has_building = "building_sdahq" }
+					}
 				}
 			}
 		}
 		modifier = {
-			weight = 10
+			factor = 0
 			FROM = {
 				has_building = "building_sdahq"
 			}

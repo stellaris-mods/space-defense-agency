@@ -87,12 +87,6 @@ sda_build_tile_perfect = {
 	has_any_resource = no
 }
 
-sda_build_tile_subpar = {
-	has_blocker = no
-	has_building = no
-	has_building_construction = no
-}
-
 sda_valid_station_planet = {
 	has_spaceport = yes
 	is_occupied_flag = no

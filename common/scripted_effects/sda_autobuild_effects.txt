@@ -3,39 +3,7 @@
 sda_autobuild = {
 	if = {
 		limit = {
-			free_building_tiles > 0
-			num_pops > 3
 			exists = owner
-			OR = {
-				AND = {
-					NOT = { has_building = "building_sdaoffice" }
-					is_capital = no
-					owner = {
-						capital_scope = {
-							has_building = "building_sdahq"
-						}
-						OR = {
-							is_ai = no
-							fd_atleast_four_offices = no
-						}
-					}
-				}
-				AND = {
-					NOT = { has_building = "building_sdahq" }
-					is_capital = yes
-				}
-				AND = {
-					has_building = "building_sdahq"
-					NOT = { has_building = "building_sdaoffice" }
-					is_capital = yes
-					any_tile = {
-						sda_build_tile_perfect = yes
-					}
-				}
-			}
-			any_tile = { # Can we build anywhere anyway?
-				sda_build_tile_subpar = yes
-			}
 			# Check that this planet isn't free from autobuilding
 			autobuild_trigger_free_from_autobuild = no
 			# This trigger prevents habitat as well
@@ -44,59 +12,48 @@ sda_autobuild = {
 			# that there is an actual capital building 1, 2, or 3.
 			# This trigger checks those + alphamod replacements
 			autobuild_trigger_has_any_capital = yes
-			# Check that there's at least 1 other building
-			autobuild_trigger_has_any_regular_building = yes
+			OR = {
+				AND = {
+					NOT = { has_building = "building_sdahq" }
+					is_capital = yes
+					num_pops > 5
+				}
+				AND = {
+					NOT = { has_building = "building_sdaoffice" }
+					is_capital = no
+					num_pops > 3
+					free_building_tiles > 0
+					# Check that there's at least 1 other building
+					autobuild_trigger_has_any_regular_building = yes
+					any_tile = { sda_build_tile_perfect = yes }
+					# Stop autobuilding after 4
+					owner = { NOT = { fd_atleast_four_offices = yes } }
+				}
+			}
 		}
 		if = {
 			limit = { is_capital = yes }
-			# This is the capital planet
-			if = { limit = {
-				NOT = { has_building = "building_sdahq" }
+			random_tile = {
+				limit = {
+					OR = {
+						has_building = no
+						AND = {
+							autobuild_trigger_has_any_regular_building = yes
+							PREV = { free_building_tiles = 0 }
+						}
+					}
+					OR = {
+						has_resource = engineering_research
+						autobuild_trigger_tile_has_any_res = no
+					}
+				}
+				add_building_construction = "building_sdahq"
 			}
-			# The capital planet does not have a HQ
-			if = {
-				limit = { any_tile = { sda_build_tile_perfect = yes } }
-				random_tile = {
-					limit = { sda_build_tile_perfect = yes }
-					add_building_construction = "building_sdahq"
-				} else = {
-				random_tile = {
-					limit = { sda_build_tile_subpar = yes }
-					add_building_construction = "building_sdahq"
-				} }
+		else = {
+			random_tile = {
+				limit = { sda_build_tile_perfect = yes }
+				add_building_construction = "building_sdaoffice"
 			}
-			else = {
-			if = { limit = {
-				NOT = { has_building = "building_sdaoffice" }
-			} }
-			# The capital planet does not have an office
-			if = {
-				limit = { any_tile = { sda_build_tile_perfect = yes } }
-				random_tile = {
-					limit = { sda_build_tile_perfect = yes }
-					add_building_construction = "building_sdaoffice"
-				} else = {
-				random_tile = {
-					limit = { sda_build_tile_subpar = yes }
-					add_building_construction = "building_sdaoffice"
-				} }
-			}
-			} }
-		else = { if = { limit = {
-			NOT = { has_building = "building_sdaoffice" }
-		}
-			# This planet is not the capital, and it has no office
-			if = {
-				limit = { any_tile = { sda_build_tile_perfect = yes } }
-				random_tile = {
-					limit = { sda_build_tile_perfect = yes }
-					add_building_construction = "building_sdaoffice"
-				} else = {
-				random_tile = {
-					limit = { sda_build_tile_subpar = yes }
-					add_building_construction = "building_sdaoffice"
-				} }
-			}
-		} } }
+		} }
 	}
 }
