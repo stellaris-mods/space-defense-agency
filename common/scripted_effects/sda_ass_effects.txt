@@ -38,18 +38,6 @@ ass_maybe_build_folksda_debuff_module = {
 	}
 }
 
-ass_build_folksda_debuff_module = {
-	switch = {
-		trigger = has_ship_flag
-		ass_op_sm_slot_1 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 1 } } }
-		ass_op_sm_slot_2 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 2 } } }
-		ass_op_sm_slot_3 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 3 } } }
-		ass_op_sm_slot_4 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 4 } } }
-		ass_op_sm_slot_5 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 5 } } }
-		ass_op_sm_slot_6 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 6 } } }
-	}
-}
-
 ass_maybe_build_folksda_regen_module = {
 	if = {
 		limit = {
@@ -79,18 +67,6 @@ ass_maybe_build_folksda_regen_module = {
 				save_event_target_as = ass_target
 			}
 		}
-	}
-}
-
-ass_build_folksda_regen_module = {
-	switch = {
-		trigger = has_ship_flag
-		ass_op_sm_slot_1 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 1 } } }
-		ass_op_sm_slot_2 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 2 } } }
-		ass_op_sm_slot_3 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 3 } } }
-		ass_op_sm_slot_4 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 4 } } }
-		ass_op_sm_slot_5 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 5 } } }
-		ass_op_sm_slot_6 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 6 } } }
 	}
 }
 
@@ -126,18 +102,6 @@ ass_maybe_build_folksda_snare_module = {
 	}
 }
 
-ass_build_folksda_snare_module = {
-	switch = {
-		trigger = has_ship_flag
-		ass_op_sm_slot_1 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 1 } } }
-		ass_op_sm_slot_2 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 2 } } }
-		ass_op_sm_slot_3 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 3 } } }
-		ass_op_sm_slot_4 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 4 } } }
-		ass_op_sm_slot_5 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 5 } } }
-		ass_op_sm_slot_6 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 6 } } }
-	}
-}
-
 ass_maybe_build_folksda_platform_module = {
 	if = {
 		limit = {
@@ -167,18 +131,6 @@ ass_maybe_build_folksda_platform_module = {
 				save_event_target_as = ass_target
 			}
 		}
-	}
-}
-
-ass_build_folksda_platform_module = {
-	switch = {
-		trigger = has_ship_flag
-		ass_op_sm_slot_1 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 1 } } }
-		ass_op_sm_slot_2 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 2 } } }
-		ass_op_sm_slot_3 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 3 } } }
-		ass_op_sm_slot_4 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 4 } } }
-		ass_op_sm_slot_5 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 5 } } }
-		ass_op_sm_slot_6 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 6 } } }
 	}
 }
 
@@ -213,20 +165,6 @@ ass_maybe_build_folksda_hangar_module = {
 		}
 	}
 }
-
-ass_build_folksda_hangar_module = {
-	switch = {
-		trigger = has_ship_flag
-		ass_op_sm_slot_1 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 1 } } }
-		ass_op_sm_slot_2 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 2 } } }
-		ass_op_sm_slot_3 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 3 } } }
-		ass_op_sm_slot_4 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 4 } } }
-		ass_op_sm_slot_5 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 5 } } }
-		ass_op_sm_slot_6 = { event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 6 } } }
-	}
-}
-
-
 
 ###############################################################################
 # EFFECTS WE OVERRIDE FROM AUTONOMOUS ASSEMBLER
