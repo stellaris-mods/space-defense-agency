@@ -9,6 +9,7 @@
 ass_maybe_build_folksda_debuff_module = {
 	if = {
 		limit = {
+			ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } }
 			has_spaceport_module = folksda_debuff_module
 			owner = {
 				any_owned_planet = {
@@ -41,6 +42,7 @@ ass_maybe_build_folksda_debuff_module = {
 ass_maybe_build_folksda_regen_module = {
 	if = {
 		limit = {
+			ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } }
 			has_spaceport_module = folksda_regen_module
 			owner = {
 				any_owned_planet = {
@@ -73,6 +75,7 @@ ass_maybe_build_folksda_regen_module = {
 ass_maybe_build_folksda_snare_module = {
 	if = {
 		limit = {
+			ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } }
 			has_spaceport_module = folksda_snare_module
 			owner = {
 				any_owned_planet = {
@@ -105,6 +108,7 @@ ass_maybe_build_folksda_snare_module = {
 ass_maybe_build_folksda_platform_module = {
 	if = {
 		limit = {
+			ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } }
 			has_spaceport_module = folksda_platform_module
 			owner = {
 				any_owned_planet = {
@@ -137,6 +141,7 @@ ass_maybe_build_folksda_platform_module = {
 ass_maybe_build_folksda_hangar_module = {
 	if = {
 		limit = {
+			ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } }
 			has_spaceport_module = folksda_hangar_module
 			owner = {
 				any_owned_planet = {
@@ -179,15 +184,9 @@ sda_ass_module_pre = {
 # Never invoked if we already found something to build.
 sda_ass_module_post = {
 	ass_maybe_build_folksda_debuff_module = yes
-	if = { limit = { ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } } }
-		ass_maybe_build_folksda_regen_module = yes
-	}
-	if = { limit = { ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } } }
-		ass_maybe_build_folksda_snare_module = yes
-	}
-	if = { limit = { ROOT = { NOT = { has_ship_flag = "ass_op_spaceport_modules" } } }
-		ass_maybe_build_folksda_hangar_module = yes
-	}
+	ass_maybe_build_folksda_regen_module = yes
+	ass_maybe_build_folksda_snare_module = yes
+	ass_maybe_build_folksda_hangar_module = yes
 }
 
 # This effect is invoked after the mission is completed OR aborted,
