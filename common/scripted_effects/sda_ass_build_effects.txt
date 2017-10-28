@@ -41,7 +41,7 @@ ass_build_folksda_hangar_module = {
 		ass_op_sm_slot_16 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 16 } } }
 		ass_op_sm_slot_17 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 17 } } }
 		ass_op_sm_slot_18 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 18 } } }
-		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 18 } } }
+		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_hangar_module" slot = 19 } } }
 	}
 }
 
@@ -66,7 +66,7 @@ ass_build_folksda_platform_module = {
 		ass_op_sm_slot_16 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 16 } } }
 		ass_op_sm_slot_17 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 17 } } }
 		ass_op_sm_slot_18 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 18 } } }
-		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 18 } } }
+		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_platform_module" slot = 19 } } }
 	}
 }
 
@@ -91,7 +91,7 @@ ass_build_folksda_snare_module = {
 		ass_op_sm_slot_16 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 16 } } }
 		ass_op_sm_slot_17 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 17 } } }
 		ass_op_sm_slot_18 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 18 } } }
-		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 18 } } }
+		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_snare_module" slot = 19 } } }
 	}
 }
 
@@ -116,8 +116,7 @@ ass_build_folksda_regen_module = {
 		ass_op_sm_slot_16 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 16 } } }
 		ass_op_sm_slot_17 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 17 } } }
 		ass_op_sm_slot_18 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 18 } } }
-		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 18 } } }
-
+		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_regen_module" slot = 19 } } }
 	}
 }
 
@@ -142,7 +141,6 @@ ass_build_folksda_debuff_module = {
 		ass_op_sm_slot_16 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 16 } } }
 		ass_op_sm_slot_17 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 17 } } }
 		ass_op_sm_slot_18 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 18 } } }
-		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 18 } } }
-
+		ass_op_sm_slot_19 = { remove_ship_flag = "ass_op_sm_build" event_target:ass_target = { set_spaceport_module = { module = "folksda_debuff_module" slot = 19 } } }
 	}
 }
