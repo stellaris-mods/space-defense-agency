@@ -135,6 +135,36 @@ sda_spawned_station_exists = {
 	}
 }
 
+sda_can_upgrade_station_class = {
+	solar_system = {
+		any_ship_in_system = {
+			exists = owner
+			owner = { is_same_value = ROOT }
+			exists = fleet
+			fleet = { has_fleet_flag = "folksda_platform" }
+			distance = {
+				source = PREVPREV
+				max_distance = 41
+				min_distance = 38
+			}
+			OR = {
+				AND = {
+					is_ship_size = military_station_large
+					PREVPREV = { fd_canbuild_level_4 = yes }
+				}
+				AND = {
+					is_ship_size = military_station_medium
+					PREVPREV = { fd_canbuild_level_3 = yes }
+				}
+				AND = {
+					is_ship_size = military_station_small
+					PREVPREV = { fd_canbuild_level_2 = yes }
+				}
+			}
+		}
+	}
+}
+
 
 ###############################################################################
 # NSC Fake Triggers

@@ -341,6 +341,7 @@ sda_check_planet = {
 			OR = {
 				sda_spawned_station_exists = no
 				owner = { has_country_flag = "sda_upgrade_stations" }
+				sda_can_upgrade_station_class = yes
 			}
 		}
 
@@ -383,7 +384,7 @@ sda_check_planet = {
 			last_created_fleet = {
 				create_ship = {
 					name = ""
-					random_existing_design = military_station_medium
+					random_existing_design = "military_station_medium"
 					effect = { set_ship_flag = "folksda_platform" }
 				}
 			}
