@@ -34,6 +34,17 @@ entity = {
 }
 
 entity = {
+	name = "humanoid_01_sdafighter_entity"
+	pdxmesh = "humanoid_01_fighter_mesh"
+	scale = 1.6
+}
+entity = {
+	name = "humanoid_01_sdabomber_entity"
+	pdxmesh = "humanoid_01_bomber_mesh"
+	scale = 1.6
+}
+
+entity = {
 	name = "mammalian_01_sdafighter_entity"
 	pdxmesh = "mammalian_01_fighter_mesh"
 	scale = 1.6
